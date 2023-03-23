@@ -1,0 +1,24 @@
+{
+  "name": "@gupo/docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
+  },
+  "devDependencies": {
+    "@histoire/plugin-vue": "^0.15.8",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "ant-design-vue": "^3.2.16",
+    "histoire": "^0.15.9",
+    "less": "^4.1.3",
+    "typescript": "^5.0.2",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  }
+}
