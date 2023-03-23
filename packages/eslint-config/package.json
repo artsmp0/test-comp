@@ -1,0 +1,31 @@
+{
+  "name": "@gupo/eslint-config",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jsonc": "^2.7.0",
+    "eslint-plugin-markdown": "^3.0.0",
+    "eslint-plugin-vue": "^9.10.0",
+    "jsonc-eslint-parser": "^2.2.0",
+    "prettier": "^2.8.6",
+    "typescript": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.6"
+  }
+}

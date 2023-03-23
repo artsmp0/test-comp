@@ -9,6 +9,7 @@
     "story:preview": "histoire preview"
   },
   "devDependencies": {
+    "@gupo/eslint-config": "^1.0.0",
     "@histoire/plugin-vue": "^0.15.8",
     "@vitejs/plugin-vue": "^4.1.0",
     "ant-design-vue": "^3.2.16",

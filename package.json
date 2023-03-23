@@ -4,7 +4,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache"
+  },
   "devDependencies": {
-    "lerna": "^6.5.1"
+    "eslint": "^8.36.0",
+    "lerna": "^6.5.1",
+    "prettier": "^2.8.6",
+    "@gupo/eslint-config": "*"
   }
 }
