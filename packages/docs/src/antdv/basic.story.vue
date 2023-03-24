@@ -1,8 +1,8 @@
 <script lang="ts" setup></script>
 
 <template>
-  <Story title="Button 按钮" :layout="{ type: 'grid', width: '50%' }" icon="ic:baseline-accessibility-new">
-    <Variant title="按钮类型">
+  <Story title="Button 按钮" :layout="{ type: 'grid', width: '500' }" icon="ic:baseline-accessibility-new" auto>
+    <Variant title="按钮类型" auto-props-disabled>
       <ASpace>
         <AButton type="primary">按钮</AButton>
         <AButton type="dashed">按钮</AButton>
@@ -12,7 +12,7 @@
         <AButton type="text">按钮</AButton>
       </ASpace>
     </Variant>
-    <Variant title="不可用状态" icon="material-symbols:disabled-by-default-outline">
+    <Variant title="不可用状态" icon="material-symbols:disabled-by-default-outline" auto-props-disabled>
       <AButton type="primary">Primary</AButton>
       <AButton type="primary" disabled>Primary(disabled)</AButton>
       <br />
