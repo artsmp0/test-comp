@@ -8,7 +8,7 @@ import { SettingOutlined, ReloadOutlined, ColumnHeightOutlined, ExpandOutlined }
 import type { HeaderOptions } from '../types';
 import ColumnSetPopper from './column-set-popper.vue';
 import HelpMessage from './help-message.vue';
-import { toRef } from 'vue';
+import { onUpdated, toRef } from 'vue';
 
 const props = defineProps<{
   container: Nullable<HTMLDivElement>;
@@ -40,7 +40,9 @@ const colHeightMap = defineDict(
 const handleClickSize: MenuClickEventHandler = e => {
   emitter(Events.updateSize, e.key as SizeType);
 };
-
+onUpdated(() => {
+  console.log('props.keepPageReload: ', props.keepPageReload);
+});
 const handleReload = () => {
   if (props.keepPageReload) {
     props.filterList(undefined, false);

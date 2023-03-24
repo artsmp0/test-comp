@@ -1,21 +1,18 @@
 import { useDebounceFn } from '@vueuse/core';
-import type { TableProps } from 'ant-design-vue';
-import { computed, nextTick, onUnmounted, ref, Ref } from 'vue';
+import { TableProps } from 'ant-design-vue/es';
+import { computed, getCurrentInstance, nextTick, onUnmounted, Ref, ref, toRefs } from 'vue';
+import { GpTableProps } from '../table';
 
-interface Params {
-  scroll: TableProps['scroll'];
-  withParentHeight?: boolean;
-  tableWrapper: Ref<HTMLDivElement | undefined>;
-}
 type Nullable<T> = T | null;
-export const useScroll = ({ scroll, withParentHeight, tableWrapper }: Params) => {
+export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>) => {
+  const { props } = getCurrentInstance()!;
+  const { scroll, isWithParentHeight } = toRefs(props as GpTableProps);
   const MIN_HEIGHT = 167;
   const y = ref(MIN_HEIGHT);
   let gpTableHead: Nullable<HTMLDivElement>, // 自定义表头
     antTableHead: Nullable<HTMLDivElement>, // antdv表格头
     antFooter: Nullable<HTMLDivElement>, // antdv表格自定义脚
     antPagination: Nullable<HTMLDivElement>; // antdv分页高度
-  // onMounted(() => {});
 
   onUnmounted(() => {
     resizeObserver?.disconnect();
@@ -35,6 +32,7 @@ export const useScroll = ({ scroll, withParentHeight, tableWrapper }: Params) =>
     const gpTableHeadH = gpTableHead?.clientHeight ?? 0;
     const tableHeight = tableWrapper.value?.clientHeight ?? 0;
     if (!tableHeight) return;
+    // 32是表格的padding
     const calcH = tableHeight - gpTableHeadH - antTableHeadH - antPaginationH - antFooterH - marginBottom - marginTop - 32;
     y.value = calcH > MIN_HEIGHT ? calcH : MIN_HEIGHT;
   };
@@ -46,29 +44,38 @@ export const useScroll = ({ scroll, withParentHeight, tableWrapper }: Params) =>
       return;
     }
     await nextTick();
-    antTableHead = tableWrapper.value.querySelector('.ant-table-thead');
-    gpTableHead = tableWrapper.value.querySelector('.gp-table__head');
-    antPagination = tableWrapper.value.querySelector('.ant-table-pagination');
-    antFooter = tableWrapper.value.querySelector('.ant-table-footer');
+    antTableHead = tableWrapper.value?.querySelector('.ant-table-thead');
+    gpTableHead = tableWrapper.value?.querySelector('.gp-table__head');
+    antPagination = tableWrapper.value?.querySelector('.ant-table-pagination');
+    antFooter = tableWrapper.value?.querySelector('.ant-table-footer');
     antTableHead && resizeObserver?.observe(antTableHead);
     gpTableHead && resizeObserver?.observe(gpTableHead);
     antPagination && resizeObserver?.observe(antPagination);
     antFooter && resizeObserver?.observe(antFooter);
     resizeObserver.observe(document.body);
+    resizeObserver.observe(tableWrapper.value);
     debounceCalc();
   };
 
   const computedScroll = computed(() => {
-    if (withParentHeight) {
-      return {
-        y: y.value,
-        ...scroll,
-      };
+    if (isWithParentHeight?.value) {
+      return Object.assign(
+        {
+          y: y.value,
+        },
+        scroll?.value || {}
+      ) as TableProps['scroll'];
     }
-    return scroll;
+    return scroll?.value as TableProps['scroll'];
   });
+
+  const resetHeight = async () => {
+    await nextTick();
+    tableWrapper.value?.querySelector('.ant-table-content')?.setAttribute('style', '');
+  };
   return {
     computedScroll,
+    resetHeight,
     init,
   };
 };

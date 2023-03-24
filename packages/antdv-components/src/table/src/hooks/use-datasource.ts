@@ -35,13 +35,12 @@ function rowSpan(data: any[], key: string) {
  * 专门用于处理数据相关的逻辑 hook
  */
 export function useDataSource() {
-  console.log('getCurrentInstance(): ', getCurrentInstance());
-  const { emit, props } = getCurrentInstance()!;
-  const { sortConfig, paginationKeys, isAutoFetch, columns, listApi, resolveData } = props as GpTableProps;
+  const instance = getCurrentInstance()!;
+  const props = instance.props as GpTableProps;
   let pagination = props.pagination as TableProps['pagination'];
   const _dataSource = ref<Recordable[]>([]);
   const getRowSpanKey = (): string[] => {
-    return columns?.filter(col => col.needRowSpan).map(col => col.dataIndex as string) || ([] as string[]);
+    return props.columns?.filter(col => col.needRowSpan).map(col => col.dataIndex as string) || ([] as string[]);
   };
   const rowSpanKey = getRowSpanKey();
   const dataSource = computed<Recordable[]>({
@@ -53,7 +52,7 @@ export function useDataSource() {
           _dataSource.value = rowSpan(_dataSource.value, key);
         });
       }
-      return resolveData?.(_dataSource) || _dataSource.value;
+      return props.resolveData?.(_dataSource) || _dataSource.value;
     },
     set(v) {
       _dataSource.value = v;
@@ -61,7 +60,7 @@ export function useDataSource() {
   });
   const loading = ref(true);
   const total = ref(0);
-  const { current, pageSize, total: pgTotalKey, list } = paginationKeys;
+  const { current, pageSize, total: pgTotalKey, list } = props.paginationKeys;
   const filterParams = ref<Recordable>({
     [current]: (pagination && (pagination as TablePaginationConfig)?.current) || 1,
     [pageSize]: (pagination && (pagination as TablePaginationConfig)?.pageSize) || 100,
@@ -74,9 +73,9 @@ export function useDataSource() {
   async function getList(sorter?: SorterResult<Recordable> | SorterResult<Recordable>[], filters?: any) {
     loading.value = true;
     let sorterParams = {} as any;
-    const sortField = sortConfig.field.sortField;
-    const orderField = sortConfig.field.orderField;
-    const order = sortConfig.order;
+    const sortField = props.sortConfig.field.sortField;
+    const orderField = props.sortConfig.field.orderField;
+    const order = props.sortConfig.order;
     if (Array.isArray(sorter)) {
       // 支持多列排序
       sorterParams = sorter
@@ -106,7 +105,7 @@ export function useDataSource() {
       ...filterParams.value,
     };
 
-    const { data, err } = await listApi!(finalParams);
+    const { data, err } = await props.listApi!(finalParams);
     loading.value = false;
     if (err) {
       // 取消请求时，loading状态不消失，因为接口重复请求了才会取消
@@ -184,10 +183,9 @@ export function useDataSource() {
     filterParams.value[current] = cur;
     filterParams.value[pageSize] = pSize;
     getList(sorter, filters);
-    emit('change', { current: cur, pageSize: pSize });
+    instance.emit('change', { current: cur, pageSize: pSize });
   };
-
-  isAutoFetch && getList();
+  props.isAutoFetch && getList();
 
   return {
     /** 表格数据 */

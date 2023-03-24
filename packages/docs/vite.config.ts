@@ -10,4 +10,11 @@ export default defineConfig({
       resolvers: [AntDesignVueResolver({ importStyle: 'css' })],
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
+  },
 });

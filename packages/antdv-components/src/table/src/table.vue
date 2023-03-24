@@ -22,16 +22,19 @@ const { dataSource, loading, computedPagination, filterList, handleChange } = us
 const { getSelectedData, setSelectedData, rowSelection, resetSelect } = useSelection(props.rowSelection);
 
 // 表格自适应父容器高度
-const { computedScroll, init } = useScroll({ scroll: props.scroll, withParentHeight: props.isWithParentHeight, tableWrapper: $tableContainer });
-const stop = watch(dataSource, v => {
-  if (!props.isWithParentHeight) {
-    stop();
-    return;
+const { computedScroll, init, resetHeight } = useScroll($tableContainer);
+watch(
+  () => [dataSource, props.isWithParentHeight],
+  v => {
+    if (!props.isWithParentHeight) {
+      resetHeight();
+      return;
+    }
+    if (v.length > 0) {
+      init();
+    }
   }
-  if (v.length > 0) {
-    init();
-  }
-});
+);
 
 defineExpose({
   dataSource,
