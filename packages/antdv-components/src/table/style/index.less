@@ -1,0 +1,78 @@
+.gp-table {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 16px;
+  overflow-y: auto;
+  &.gp-table--h-full {
+    height: 100%;
+  }
+  :deep(.ant-table-pagination) {
+    margin: 0;
+    padding-top: 16px;
+  }
+  .gp-table__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+  }
+  .gp-table__title {
+    font-size: 16px;
+  }
+  .gp-table-options__icon {
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      color: var(--ant-primary-color);
+    }
+  }
+
+  .column-setting__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+  }
+  .column-setting__btn {
+    cursor: pointer;
+    &:hover {
+      color: var(--ant-primary-color);
+    }
+  }
+  .column-setting__item {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    cursor: move;
+
+    .column-setting__item-icon {
+      margin-right: 8px;
+    }
+  }
+
+  .gp-table-help-message {
+    font-size: 12px;
+  }
+  .gp-table-help-message__icon {
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+
+  .ant-table-pagination {
+    margin-bottom: 0;
+  }
+
+  .ant-pagination-item-active {
+    background: var(--ant-primary-color) !important;
+    a {
+      color: #fff !important;
+    }
+  }
+
+  // 单元格内容为空显示横杠 避免 customRender error warning
+  .ant-table-cell:empty:not(.ant-table-cell-fix-right)::after {
+    content: '—';
+  }
+}

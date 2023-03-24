@@ -3,7 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "peerDependencies": {
+    "ant-design-vue": ">=3.2.0",
+    "vue": ">=3.2.0"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@gupo/utils": "*",
+    "@vueuse/core": "^9.13.0",
+    "ant-design-vue": "^3.2.16",
+    "lodash-es": "^4.17.21",
+    "sortablejs": "^1.15.0"
+  },
   "devDependencies": {
-    "@gupo/eslint-config": "^1.0.0"
+    "@types/lodash-es": "^4.17.7",
+    "@types/sortablejs": "^1.15.1"
   }
 }

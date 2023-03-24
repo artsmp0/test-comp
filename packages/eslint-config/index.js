@@ -103,5 +103,6 @@ module.exports = {
       },
     ],
     'vue/attribute-hyphenation': ['error', 'always'],
+    'vue/prefer-import-from-vue': 'off',
   },
 };
