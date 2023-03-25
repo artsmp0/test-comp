@@ -2,7 +2,6 @@
 import { GpTable } from '../../../antdv-components/src';
 import { TableColumns } from '../../../antdv-components/src/table/src/types';
 import 'ant-design-vue/dist/antd.variable.less';
-import 'ant-design-vue/dist/antd.less';
 import '../../../antdv-components/src/table/style';
 
 interface User {
@@ -11,7 +10,6 @@ interface User {
   male: boolean;
 }
 const getUser = (params: { pageSize: number; current: number }) => {
-  console.log('params: ', params);
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({

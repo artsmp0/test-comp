@@ -1,1 +1,9 @@
+import 'ant-design-vue/es/table/style';
+import 'ant-design-vue/es/divider/style';
+import 'ant-design-vue/es/checkbox/style';
+import 'ant-design-vue/es/popover/style';
+import 'ant-design-vue/es/tooltip/style';
+import 'ant-design-vue/es/space/style';
+import 'ant-design-vue/es/dropdown/style';
+import 'ant-design-vue/es/menu/style';
 import './index.less';
