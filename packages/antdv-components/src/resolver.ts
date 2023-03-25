@@ -34,14 +34,13 @@ export function GupoAntdvResolver(options: GpResolverOptions = { importStyle: 'c
       // 判断解析的组件名称是不是当前组件库的
       if (name.startsWith('Gp')) {
         // 获取到组件名称
-        const partialName = name.slice(2);
         return {
           // 组件名称
-          name: partialName,
+          name: name,
           // 从哪个路径导入，es/lib
-          from: `${name}/${moduleType}`,
+          from: `@gupo/antdv-components/${moduleType}`,
           // 根据组件名称获取到对应的 css 导入路径。GpTable => es/gp-table/style/index
-          sideEffects: getSideEffects(kebabCase(partialName), options),
+          sideEffects: getSideEffects(kebabCase(name), options),
         };
       }
     },

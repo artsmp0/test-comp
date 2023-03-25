@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Space, Dropdown, Menu, MenuItem } from 'ant-design-vue';
 import { useFullscreen } from '@vueuse/core';
-import { defineDict, type Nullable, type Recordable } from '@gupo/utils';
+import { defineDict, type Nullable, type Recordable } from '../../../utils';
 import type { SizeType } from 'ant-design-vue/es/config-provider';
 import type { MenuClickEventHandler } from 'ant-design-vue/es/menu/src/interface';
 import { SettingOutlined, ReloadOutlined, ColumnHeightOutlined, ExpandOutlined } from '@ant-design/icons-vue';

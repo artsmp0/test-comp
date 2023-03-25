@@ -17,3 +17,8 @@ export const genExternal = (pkgJsonPath: string, options: { full?: boolean }) =>
     return externals.some(dep => id === dep || (options.full && id.startsWith(`${dep}/`)));
   };
 };
+
+export const excludeFiles = (files: string[]) => {
+  const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist'];
+  return files.filter(path => !excludes.some(exclude => path.includes(exclude)));
+};

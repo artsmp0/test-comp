@@ -3,7 +3,7 @@ import path from 'path';
 export const PKG_NAME = 'antdv-components';
 export const PKG_CAMEL_NAME = 'GupoAntdvComponents';
 
-export const projRoot = path.resolve(__dirname, '../../../../');
+export const projRoot = path.resolve(__dirname, '../../../');
 export const pkgRoot = path.resolve(projRoot, 'packages');
 // antdv 业务组件库的根目录
 export const antdvPkgRoot = path.resolve(pkgRoot, 'antdv-components');

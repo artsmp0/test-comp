@@ -11,9 +11,10 @@ interface BuildParams {
   pkgJson: string;
   outputEs: string;
   outputLib: string;
+  pkgRoot: string;
 }
 
-export const buildModules = ({ srcRoot, pkgJson, outputEs, outputLib }: BuildParams) => {
+export const buildModules = ({ pkgJson, outputEs, outputLib, srcRoot }: BuildParams) => {
   return async () => {
     const entry = [path.resolve(srcRoot, 'index.ts')];
     const bundle = await rollup({

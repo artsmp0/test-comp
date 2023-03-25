@@ -14,5 +14,6 @@ declare module '@vue/runtime-core' {
     ASpace: typeof import('ant-design-vue/es')['Space']
     ATable: typeof import('ant-design-vue/es')['Table']
     ATag: typeof import('ant-design-vue/es')['Tag']
+    GpTable: typeof import('@gupo/antdv-components/es')['GpTable']
   }
 }

@@ -23,18 +23,15 @@ const { getSelectedData, setSelectedData, rowSelection, resetSelect } = useSelec
 
 // 表格自适应父容器高度
 const { computedScroll, init, resetHeight } = useScroll($tableContainer);
-watch(
-  () => [dataSource, props.isWithParentHeight],
-  v => {
-    if (!props.isWithParentHeight) {
-      resetHeight();
-      return;
-    }
-    if (v.length > 0) {
-      init();
-    }
+watch(dataSource, v => {
+  if (!props.isWithParentHeight) {
+    resetHeight();
+    return;
   }
-);
+  if (v.length > 0) {
+    init();
+  }
+});
 
 defineExpose({
   dataSource,
@@ -65,6 +62,7 @@ defineExpose({
       </div>
       <div>
         <slot name="customOperation"></slot>
+        {{ computedScroll }}
         <Divider v-if="$slots.customOperation" :type="'vertical'" />
         <Options
           v-model:size="size"

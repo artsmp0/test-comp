@@ -1,14 +1,4 @@
 <script lang="ts" setup>
-import { GpTable } from '../../../antdv-components/src';
-import { TableColumns } from '../../../antdv-components/src/table/src/types';
-import 'ant-design-vue/dist/antd.variable.less';
-import '../../../antdv-components/src/table/style';
-
-interface User {
-  name: string;
-  age: number;
-  male: boolean;
-}
 const getUser = (params: { pageSize: number; current: number }) => {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -27,9 +17,7 @@ const getUser = (params: { pageSize: number; current: number }) => {
     }, 1000);
   });
 };
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type Column = TableColumns<User>[number];
-const columns: TableColumns<User> = [
+const columns = [
   {
     dataIndex: 'name',
     title: '姓名',
@@ -73,14 +61,14 @@ function initState() {
             :is-show-header="state.isShowHeader"
             :help-message="state.helpMessage"
             :title="state.title"
-            :columns="columns"
+            :columns="columns as any"
             :is-with-parent-height="state.isWithParentHeight"
             :size="state.size"
             :list-api="getUser"
             :is-keep-page-reload="state.isKeepPageReload"
             :pagination-keys="{ current: 'current', list: 'list', pageSize: 'pageSize', total: 'pagination.total' }"
           >
-            <template #bodyCell="{ record, column }: { record: User, column: Column }">
+            <template #bodyCell="{ record, column }">
               <ATag v-if="column.dataIndex === 'male'" :color="record.male ? 'blue' : 'red'">{{ record.male ? '男' : '女' }}</ATag>
               <template v-if="column.dataIndex === 'operation'">
                 <ATag color="green">编辑</ATag>

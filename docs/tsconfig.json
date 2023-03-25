@@ -8,7 +8,10 @@
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@gupo/antdv-components": ["../antdv-components"]
+    }
   },
   "include": ["shims.d.ts", "src/**/*", "src/**/*.vue", "components.d.ts"]
 }

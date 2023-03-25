@@ -11,6 +11,7 @@ interface BuildParams {
   outputEs: string;
   outputLib: string;
   output: string;
+  pkgRoot: string;
 }
 
 export const buildStyle = (buildParams: BuildParams) => {
