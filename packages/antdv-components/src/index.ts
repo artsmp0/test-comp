@@ -4,7 +4,7 @@ import { GpTable } from './table';
 export { GpTable };
 
 const components = [GpTable];
-function install(app: App) {
+export function install(app: App) {
   components.forEach(item => {
     if (item.install!) {
       app.use(item);

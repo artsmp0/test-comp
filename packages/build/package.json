@@ -1,0 +1,27 @@
+{
+  "name": "@gupo/build",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build:antdv": "gulp --require @esbuild-kit/cjs-loader -f ./src/build-antdv.ts"
+  },
+  "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/gulp": "^4.0.10",
+    "@types/gulp-autoprefixer": "^0.0.33",
+    "@types/gulp-clean-css": "^4.3.0",
+    "@types/gulp-less": "^0.0.32",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "esbuild": "^0.17.13",
+    "fs-extra": "^11.1.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-less": "^5.0.0",
+    "rollup": "^3.20.2",
+    "rollup-plugin-esbuild": "^5.0.0"
+  }
+}

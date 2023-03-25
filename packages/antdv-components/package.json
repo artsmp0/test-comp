@@ -5,7 +5,8 @@
   "license": "MIT",
   "peerDependencies": {
     "ant-design-vue": ">=3.2.0",
-    "vue": ">=3.2.0"
+    "vue": ">=3.2.0",
+    "@ant-design/icons-vue": ">=6"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
