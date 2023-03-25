@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { GpTable } from './table';
+import { GpTable } from './gp-table';
 
 export { GpTable };
 
