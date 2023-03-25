@@ -15,7 +15,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <Tooltip :placement="props.placement" :get-popup-container="triggerNode => triggerNode.parentElement">
+  <Tooltip :placement="props.placement" :get-popup-container="triggerNode => triggerNode.parentElement!">
     <template #title>
       <span class="gp-table-help-message">
         <slot name="helpMessage">{{ props.helpMessage }}</slot>

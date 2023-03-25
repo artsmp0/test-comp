@@ -23,4 +23,7 @@ export default defineConfig({
       strict: false,
     },
   },
+  preview: {
+    host: '0.0.0.0',
+  },
 });

@@ -94,7 +94,7 @@ async function handleVisibleChange() {
   <Popover
     class="column-setting"
     :trigger="'click'"
-    :get-popup-container="triggerNode => triggerNode.parentElement"
+    :get-popup-container="triggerNode => triggerNode.parentElement!"
     placement="bottomRight"
     @visible-change="handleVisibleChange"
   >

@@ -6,7 +6,7 @@
   "scripts": {
     "story:dev": "histoire dev",
     "story:build": "histoire build",
-    "story:preview": "histoire preview"
+    "story:preview": "histoire preview --port 4567"
   },
   "devDependencies": {
     "@gupo/eslint-config": "^1.0.0",

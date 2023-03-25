@@ -12,8 +12,8 @@ export const antdvSrcRoot = path.resolve(antdvPkgRoot, 'src');
 
 // output
 export const antdvOutput = path.resolve(antdvPkgRoot, 'dist');
-export const antdvOutputEs = path.resolve(antdvOutput, 'es');
-export const antdvOutputLib = path.resolve(antdvOutput, 'lib');
+export const antdvOutputEs = path.resolve(antdvPkgRoot, 'es');
+export const antdvOutputLib = path.resolve(antdvPkgRoot, 'lib');
 
 // package.json
 export const antdvPkgJson = path.resolve(antdvPkgRoot, 'package.json');

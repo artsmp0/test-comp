@@ -8,7 +8,7 @@ import { useSelection } from './hooks/use-selection';
 import { gpTableEmits, tableProps } from './table';
 import { Table, Divider } from 'ant-design-vue';
 import HelpMessage from './components/help-message.vue';
-import Options from './components/Options.vue';
+import Options from './components/options.vue';
 
 const props = defineProps(tableProps);
 
