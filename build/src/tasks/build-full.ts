@@ -5,18 +5,11 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild';
 import { genExternal } from '../utils';
-
-interface BuildParams {
-  srcRoot: string;
-  pkgJson: string;
-  output: string;
-  pkgCamelName: string;
-}
+import { BuildParams } from '../utils/types';
 
 const build = ({ output, pkgJson, srcRoot, pkgCamelName }: BuildParams) => {
   return async (minify: boolean) => {
     const entry = path.resolve(srcRoot, 'index.ts');
-    console.log('entry: ', entry);
 
     const build = await rollup({
       input: entry,
@@ -62,9 +55,9 @@ const build = ({ output, pkgJson, srcRoot, pkgCamelName }: BuildParams) => {
   };
 };
 
-export const buildFull = ({ output, pkgJson, pkgCamelName, srcRoot }: BuildParams) => {
-  const b = build({ output, pkgJson, pkgCamelName, srcRoot });
-  return async () => {
+export const buildFull = (buildParams: BuildParams) => {
+  const b = build(buildParams);
+  return async function buildFullTask() {
     await Promise.all([b(false), b(true)]);
   };
 };

@@ -5,17 +5,10 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import esbuild from 'rollup-plugin-esbuild';
 import { genExternal } from '../utils';
-
-interface BuildParams {
-  srcRoot: string;
-  pkgJson: string;
-  outputEs: string;
-  outputLib: string;
-  pkgRoot: string;
-}
+import { BuildParams } from '../utils/types';
 
 export const buildModules = ({ pkgJson, outputEs, outputLib, srcRoot }: BuildParams) => {
-  return async () => {
+  return async function buildModulesTask() {
     const entry = [path.resolve(srcRoot, 'index.ts')];
     const bundle = await rollup({
       input: entry,

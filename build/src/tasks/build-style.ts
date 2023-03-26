@@ -5,17 +5,10 @@ import cleanCss from 'gulp-clean-css';
 import glob from 'fast-glob';
 import { rollup } from 'rollup';
 import esbuild from 'rollup-plugin-esbuild';
-
-interface BuildParams {
-  srcRoot: string;
-  outputEs: string;
-  outputLib: string;
-  output: string;
-  pkgRoot: string;
-}
+import { BuildParams } from '../utils/types';
 
 export const buildStyle = (buildParams: BuildParams) => {
-  return async () => {
+  return async function buildStyleTask() {
     await Promise.all([buildLess(buildParams), copyLess(buildParams), buildFull(buildParams), buildStyleModules(buildParams)]);
   };
 };
@@ -53,7 +46,6 @@ const buildFull = async ({ output, srcRoot }: BuildParams) => {
 
 const buildStyleModules = async ({ outputEs, outputLib, srcRoot }: BuildParams) => {
   const input = [...(await glob(`${srcRoot}/**/style/*.ts`)), `${srcRoot}/resolver.ts`];
-  console.log('input: ', input);
   const bundle = await rollup({
     input,
     plugins: [
