@@ -62,7 +62,6 @@ defineExpose({
       </div>
       <div>
         <slot name="customOperation"></slot>
-        {{ computedScroll }}
         <Divider v-if="$slots.customOperation" :type="'vertical'" />
         <Options
           v-model:size="size"

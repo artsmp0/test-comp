@@ -1,3 +1,7 @@
 import { defineSetupVue3 } from '@histoire/plugin-vue';
+import GupoAntdv from '@gupo/antdv-components';
+import '../packages/antdv-components/src/gp-table/style';
 
-export const setupVue3 = defineSetupVue3(({ app }) => {});
+export const setupVue3 = defineSetupVue3(({ app }) => {
+  app.use(GupoAntdv);
+});

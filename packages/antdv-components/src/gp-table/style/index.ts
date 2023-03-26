@@ -1,9 +1,9 @@
-import 'ant-design-vue/es/table/style';
-import 'ant-design-vue/es/divider/style';
-import 'ant-design-vue/es/checkbox/style';
-import 'ant-design-vue/es/popover/style';
-import 'ant-design-vue/es/tooltip/style';
-import 'ant-design-vue/es/space/style';
-import 'ant-design-vue/es/dropdown/style';
-import 'ant-design-vue/es/menu/style';
+import 'ant-design-vue/es/table/style/index.js';
+import 'ant-design-vue/es/divider/style/index.js';
+import 'ant-design-vue/es/checkbox/style/index.js';
+import 'ant-design-vue/es/popover/style/index.js';
+import 'ant-design-vue/es/tooltip/style/index.js';
+import 'ant-design-vue/es/space/style/index.js';
+import 'ant-design-vue/es/dropdown/style/index.js';
+import 'ant-design-vue/es/menu/style/index.js';
 import './index.less';
