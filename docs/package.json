@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "story:dev": "histoire dev",
+    "story:dev": "histoire dev --port 9527 --host",
     "story:build": "histoire build",
     "story:preview": "histoire preview --port 4567"
   },
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@gupo/antdv-components": "^1.0.0",
+    "vant": "^4.1.2",
     "vue": "^3.2.47"
   }
 }
