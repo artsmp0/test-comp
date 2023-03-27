@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { TableColumns } from '@gupo/antdv-components/es/gp-table/src/types';
 import { ConfigProvider } from 'ant-design-vue';
+import { ref } from 'vue';
 
 const getUser = (params: { pageSize: number; current: number }) => {
   return new Promise(resolve => {
@@ -46,13 +47,16 @@ ConfigProvider.config({
     primaryColor: '#f00',
   },
 });
+
+const isWithParenHeight = ref(false);
 </script>
 
 <template>
-  <div class="box">
-    <ConfigProvider>
+  <ConfigProvider>
+    <ACheckbox v-model:checked="isWithParenHeight">是否跟随父容器宽高</ACheckbox>
+    <div class="box">
       <GpTable
-        is-with-parent-height
+        :is-with-parent-height="isWithParenHeight"
         :columns="columns"
         :list-api="getUser"
         :pagination-keys="{ current: 'current', list: 'list', pageSize: 'pageSize', total: 'pagination.total' }"
@@ -65,9 +69,8 @@ ConfigProvider.config({
           </template>
         </template>
       </GpTable>
-      <AButton>12fff3f</AButton>
-    </ConfigProvider>
-  </div>
+    </div>
+  </ConfigProvider>
 </template>
 
 <style>
@@ -80,6 +83,7 @@ body {
 #play {
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

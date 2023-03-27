@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ColumnsType } from 'ant-design-vue/es/table';
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { useColumn } from './hooks/use-columns';
 import { useDataSource } from './hooks/use-datasource';
 import { useScroll } from './hooks/use-scroll';
@@ -22,16 +22,7 @@ const { dataSource, loading, computedPagination, filterList, handleChange } = us
 const { getSelectedData, setSelectedData, rowSelection, resetSelect } = useSelection(props.rowSelection);
 
 // 表格自适应父容器高度
-const { computedScroll, init, resetHeight } = useScroll($tableContainer);
-watch(dataSource, v => {
-  if (!props.isWithParentHeight) {
-    resetHeight();
-    return;
-  }
-  if (v.length > 0) {
-    init();
-  }
-});
+const { computedScroll } = useScroll($tableContainer, dataSource);
 
 defineExpose({
   dataSource,

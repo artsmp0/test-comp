@@ -41,7 +41,7 @@ const columns = [
 
 function initState() {
   return {
-    isWithParentHeight: false,
+    isWithParentHeight: true,
     title: '用户列表',
     isShowHeader: true,
     helpMessage: '用户列表头部帮助信息',
@@ -53,7 +53,7 @@ function initState() {
 </script>
 
 <template>
-  <Story title="Gupo Table" auto-props-disabled>
+  <Story title="Gupo Table" icon="material-symbols:table" auto-props-disabled>
     <Variant title="playground" :init-state="initState">
       <template #default="{ state }">
         <div style="height: 100vh">

@@ -1,10 +1,11 @@
 import { useDebounceFn } from '@vueuse/core';
 import { TableProps } from 'ant-design-vue/es';
-import { computed, getCurrentInstance, nextTick, onUnmounted, Ref, ref, toRefs } from 'vue';
+import { computed, getCurrentInstance, nextTick, onUnmounted, Ref, ref, toRefs, watchEffect, WritableComputedRef } from 'vue';
+import { Recordable } from '../../../utils';
 import { GpTableProps } from '../table';
 
 type Nullable<T> = T | null;
-export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>) => {
+export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>, dataSource: WritableComputedRef<Recordable<any>[]>) => {
   const { props } = getCurrentInstance()!;
   const { scroll, isWithParentHeight } = toRefs(props as GpTableProps);
   const MIN_HEIGHT = 167;
@@ -38,7 +39,7 @@ export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>) => {
   };
   const debounceCalc = useDebounceFn(calcDynamicHeight, 200);
   const resizeObserver: ResizeObserver | undefined = new ResizeObserver(debounceCalc);
-
+  const isFirst = ref(true);
   const init = async () => {
     if (!tableWrapper.value) {
       return;
@@ -48,12 +49,15 @@ export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>) => {
     gpTableHead = tableWrapper.value?.querySelector('.gp-table__head');
     antPagination = tableWrapper.value?.querySelector('.ant-table-pagination');
     antFooter = tableWrapper.value?.querySelector('.ant-table-footer');
-    antTableHead && resizeObserver?.observe(antTableHead);
-    gpTableHead && resizeObserver?.observe(gpTableHead);
-    antPagination && resizeObserver?.observe(antPagination);
-    antFooter && resizeObserver?.observe(antFooter);
-    resizeObserver.observe(document.body);
-    resizeObserver.observe(tableWrapper.value);
+    if (isFirst.value) {
+      isFirst.value = false;
+      antTableHead && resizeObserver?.observe(antTableHead);
+      gpTableHead && resizeObserver?.observe(gpTableHead);
+      antPagination && resizeObserver?.observe(antPagination);
+      antFooter && resizeObserver?.observe(antFooter);
+      resizeObserver.observe(document.body);
+      resizeObserver.observe(tableWrapper.value);
+    }
     debounceCalc();
   };
 
@@ -73,9 +77,18 @@ export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>) => {
     await nextTick();
     tableWrapper.value?.querySelector('.ant-table-content')?.setAttribute('style', '');
   };
+
+  watchEffect(() => {
+    if (!props.isWithParentHeight) {
+      resetHeight();
+      return;
+    }
+    if (dataSource.value.length > 0) {
+      init();
+    }
+  });
+
   return {
     computedScroll,
-    resetHeight,
-    init,
   };
 };
