@@ -1,9 +1,15 @@
-import { defineConfig } from 'histoire';
+import { defaultColors, defineConfig } from 'histoire';
 import { HstVue } from '@histoire/plugin-vue';
 
 export default defineConfig({
   plugins: [HstVue()],
   setupFile: './histoire.setup.ts',
+  theme: {
+    title: 'Gupo组件库',
+    colors: {
+      primary: defaultColors.sky,
+    },
+  },
   vite: {
     server: {
       host: '0.0.0.0',
