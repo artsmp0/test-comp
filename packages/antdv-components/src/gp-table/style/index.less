@@ -1,28 +1,29 @@
 .gp-table {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  border-radius: 4px;
-  background-color: #fff;
   padding: 16px;
   overflow-y: auto;
-  &.gp-table--h-full {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgb(50 50 93 / 25%) 0 2px 5px -1px, rgb(0 0 0 / 30%) 0 1px 3px -1px;
+
+  &--h-full {
     height: 100%;
   }
-  :deep(.ant-table-pagination) {
-    margin: 0;
-    padding-top: 16px;
-  }
-  .gp-table__head {
+
+  &__head {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 8px;
   }
-  .gp-table__title {
+
+  &__title {
     font-size: 16px;
   }
-  .gp-table-options__icon {
+
+  &-options__icon {
     font-size: 16px;
     cursor: pointer;
+
     &:hover {
       color: var(--ant-primary-color);
     }
@@ -30,20 +31,23 @@
 
   .column-setting__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 4px 0;
   }
+
   .column-setting__btn {
     cursor: pointer;
+
     &:hover {
       color: var(--ant-primary-color);
     }
   }
+
   .column-setting__item {
-    padding: 4px 0;
     display: flex;
     align-items: center;
+    padding: 4px 0;
     cursor: move;
 
     .column-setting__item-icon {
@@ -51,13 +55,14 @@
     }
   }
 
-  .gp-table-help-message {
+  &-help-message {
     font-size: 12px;
   }
-  .gp-table-help-message__icon {
+
+  &-help-message__icon {
+    margin-left: 4px;
     font-size: 14px;
     cursor: pointer;
-    margin-left: 4px;
   }
 
   .ant-table-pagination {
@@ -66,6 +71,7 @@
 
   .ant-pagination-item-active {
     background: var(--ant-primary-color) !important;
+
     a {
       color: #fff !important;
     }

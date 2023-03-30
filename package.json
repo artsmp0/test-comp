@@ -9,7 +9,7 @@
     "play"
   ],
   "scripts": {
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache --fix",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --fix",
     "build:antdv": "lerna run build:antdv --scope @gupo/build",
     "dev": "lerna run dev --scope @gupo/play",
     "dev:docs": "lerna run story:dev --scope @gupo/docs",
@@ -24,6 +24,11 @@
     "lerna": "^6.5.1",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.6",
+    "stylelint": "^15.3.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^31.0.0",
+    "stylelint-order": "^6.0.3",
     "vue": "^3.2.47"
   },
   "lint-staged": {
