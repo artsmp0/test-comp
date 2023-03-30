@@ -32,7 +32,7 @@ export function GupoAntdvResolver(options: GpResolverOptions = { importStyle: 'c
     type: 'component', // 组件类型
     resolve: (name: string) => {
       // 判断解析的组件名称是不是当前组件库的
-      if (name.startsWith('Gp')) {
+      if (name.startsWith('Gpa')) {
         // 获取到组件名称
         return {
           // 组件名称

@@ -53,11 +53,17 @@ function initState() {
 </script>
 
 <template>
-  <Story title="Gupo Table" icon="material-symbols:table" auto-props-disabled>
+  <!-- auto-props-disabled：禁用自动生成 props，复杂组件建议禁用 -->
+  <!-- title用 / 分割，histoire 会自动进行匹配成组 -->
+  <!-- icon可以到 https://icones.netlify.app/ 上面去找，不写也可以 -->
+  <!-- 一个 story 可以有多个 Variant 组件，我们可以定义一些常用的示例，以 Button 为例：可能会有：基本用法，图标按钮... -->
+  <Story title="表格组件/演示" icon="material-symbols:table" auto-props-disabled>
+    <!-- initState 必须要是一个函数，返回初始状态 -->
     <Variant title="playground" :init-state="initState">
+      <!-- 默认插槽可以获取到初始状态：绑定后 controls 插槽中变更了状态则会实时响应组件更新 -->
       <template #default="{ state }">
         <div style="height: 100vh">
-          <GpTable
+          <GpaTable
             :is-show-header="state.isShowHeader"
             :help-message="state.helpMessage"
             :title="state.title"
@@ -75,9 +81,11 @@ function initState() {
                 <ATag color="green">删除</ATag>
               </template>
             </template>
-          </GpTable>
+          </GpaTable>
         </div>
       </template>
+      <!-- 可以针对 state 进行变更，请注意 props 响应式不能丢失才会起效果，例如此处的 表格尺寸 -->
+      <!-- 对应的空间可以上 histoire 文档去查询 -->
       <template #controls="{ state }">
         <HstCheckbox v-model="state.isWithParentHeight" title="自适应父容器高度" />
         <HstCheckbox v-model="state.isShowHeader" title="显示头部" />

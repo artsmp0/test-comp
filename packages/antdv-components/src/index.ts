@@ -1,9 +1,9 @@
 import type { App } from 'vue';
-import { GpTable } from './gp-table';
+import { GpaTable } from './gp-table';
 
-export { GpTable };
+export { GpaTable };
 
-const components = [GpTable];
+const components = [GpaTable];
 export function install(app: App) {
   components.forEach(item => {
     if (item.install!) {

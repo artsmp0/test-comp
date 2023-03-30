@@ -12,7 +12,7 @@ const onConfirm = (value: Date) => {
 </script>
 
 <template>
-  <Story title="日期选择" icon="ic:baseline-accessibility-new" auto>
+  <Story title="日期选择" icon="ic:baseline-accessibility-new">
     <Variant title="日期选择" auto-props-disabled>
       <VanCell title="选择单个日期" :value="date" @click="show = true" />
       <VanCalendar v-model:show="show" @confirm="onConfirm" />

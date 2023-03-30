@@ -1,9 +1,9 @@
 import { withInstall } from '../utils';
 import Table from './src/table.vue';
 
-Table.name = 'GpTable';
+Table.name = 'GpaTable';
 
-export const GpTable = withInstall(Table);
-export default GpTable;
+export const GpaTable = withInstall(Table);
+export default GpaTable;
 
 export * from './src/table';

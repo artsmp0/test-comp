@@ -11,6 +11,7 @@
   "scripts": {
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
     "build:antdv": "lerna run build:antdv --scope @gupo/build",
+    "dev": "lerna run dev --scope @gupo/play",
     "dev:docs": "lerna run story:dev --scope @gupo/docs"
   },
   "devDependencies": {

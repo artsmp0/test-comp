@@ -9,6 +9,6 @@ export {};
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    GpTable: typeof import('../packages/antdv-components/src/index')['GpTable'];
+    GpaTable: typeof import('../packages/antdv-components/src/index')['GpaTable'];
   }
 }
