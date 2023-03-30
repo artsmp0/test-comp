@@ -9,16 +9,26 @@
     "play"
   ],
   "scripts": {
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache --fix",
     "build:antdv": "lerna run build:antdv --scope @gupo/build",
     "dev": "lerna run dev --scope @gupo/play",
-    "dev:docs": "lerna run story:dev --scope @gupo/docs"
+    "dev:docs": "lerna run story:dev --scope @gupo/docs",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
     "@gupo/eslint-config": "*",
     "eslint": "^8.36.0",
+    "husky": "^8.0.3",
     "lerna": "^6.5.1",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.8.6",
     "vue": "^3.2.47"
+  },
+  "lint-staged": {
+    "**/*.{js,cjs,mjs,jsx,tsx,ts,vue}": [
+      "npm run lint"
+    ]
   }
 }

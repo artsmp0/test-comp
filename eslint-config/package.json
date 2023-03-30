@@ -2,10 +2,10 @@
   "name": "@gupo/eslint-config",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "index.js",
   "files": [
     "index.js"
   ],
+  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },

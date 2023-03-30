@@ -1,12 +1,17 @@
 {
   "name": "@gupo/docs",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "story:dev": "histoire dev --port 9527 --host",
     "story:build": "histoire build",
     "story:preview": "histoire preview --port 4567"
+  },
+  "dependencies": {
+    "@gupo/antdv-components": "^1.0.0",
+    "vant": "^4.1.2",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "@gupo/eslint-config": "^1.0.0",
@@ -18,10 +23,5 @@
     "typescript": "^5.0.2",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.2.1"
-  },
-  "dependencies": {
-    "@gupo/antdv-components": "^1.0.0",
-    "vant": "^4.1.2",
-    "vue": "^3.2.47"
   }
 }
