@@ -5,6 +5,7 @@
     "emitDeclarationOnly": true,
     "module": "ESNext",
     "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true,
     "lib": ["DOM", "ESNext"],
     "resolveJsonModule": true,
     "useDefineForClassFields": true,

@@ -10,5 +10,6 @@ export {};
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     GpaTable: typeof import('../packages/antdv-components/src/index')['GpaTable'];
+    GpaTime: typeof import('../packages/antdv-components/src/index')['GpaTime'];
   }
 }

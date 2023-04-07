@@ -33,7 +33,7 @@ export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>, dataSou
     const gpTableHeadH = gpTableHead?.clientHeight ?? 0;
     const tableHeight = tableWrapper.value?.clientHeight ?? 0;
     if (!tableHeight) return;
-    // 32是表格的padding
+    // TODO 表格padding需要动态计算
     const calcH = tableHeight - gpTableHeadH - antTableHeadH - antPaginationH - antFooterH - marginBottom - marginTop - 32;
     y.value = calcH > MIN_HEIGHT ? calcH : MIN_HEIGHT;
   };
