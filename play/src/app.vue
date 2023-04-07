@@ -1,15 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Form from './Form/index.vue';
+</script>
 
 <template>
-  <div>
-    <div>
-      <GpaTime time="2023-03-20"></GpaTime>
-    </div>
-    <div>
-      <GpaTime time="2023-03-20" :mode="'relative'"></GpaTime>
-    </div>
-    <div>
-      <GpaTime :time="Date.now()" :step="1" :mode="'relative'"></GpaTime>
-    </div>
+  <div style="width: 50%; padding: 50px; margin: 0 auto">
+    <Form />
   </div>
 </template>

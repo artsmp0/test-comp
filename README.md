@@ -130,7 +130,12 @@ export default {
 
 组件文档主要采用 histoire 作为文档框架，使用 vite 作为开发环境，文档编写在 docs 目录下。
 
-- antdv 目录存放 pc 端组件
-- vant 目录存放移动端组件
+- antdv 目录存放 pc 端组件，注意：无论是通用组件还是基于 antdv 二次封装的都放在该目录下。
+- vant 目录存放移动端组件，（未搭建。有意向的同学可以自行模仿并实现构建打包逻辑。
 - 具体的文档编写可以参考 [histoire](https://histoire.dev/examples/），也可以以[表格组件](docs/antdv/gpa-table.story.vue)为例，里面有对应注释解释文档编写
 - 建议简单组件就单文件就好，复杂组件可以分为 2 个文件，一个作为示例，一个显示详细的文档。如[表格组件](docs/antdv/gpa-table.story.vue)
+- 若是二次封装的组件，则需要导入使用到的组件库的样式，而且需要两份不同的，一份是编译后的 css，一份是未编译的 less 文件
+
+> 待完善：
+> 请注意，antdv 组件的前缀为 gpa，但是在组件所在目录不需要使用前缀，前缀仅在导出组件和使用组件时使用。
+> vant 组件的前缀建议定义为 gpv，为什么需要区分呢，因为开发的时候我们需要使用 unplugin-vue-components 来自动引入 组件库 src 下的对应文件。

@@ -2,12 +2,10 @@
   "name": "@gupo/antdv-components",
   "version": "1.0.0",
   "license": "MIT",
+  "author": "shenmengping",
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
-  "engines": {
-    "node": ">=14"
-  },
   "exports": {
     ".": {
       "types": "./es/index.d.ts",
@@ -26,7 +24,6 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "author": "shenmengping",
   "peerDependencies": {
     "@ant-design/icons-vue": ">=6",
     "ant-design-vue": ">=3.2.0",
@@ -44,5 +41,8 @@
   "devDependencies": {
     "@types/lodash-es": "^4.17.7",
     "@types/sortablejs": "^1.15.1"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

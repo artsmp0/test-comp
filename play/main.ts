@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import App from './src/app.vue';
-import 'ant-design-vue/dist/antd.variable.min.css';
 (async () => {
   // const apps = import.meta.glob('./src/*.vue');
   // const name = location.pathname.replace(/^\//, '') || 'App';

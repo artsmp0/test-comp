@@ -1,0 +1,44 @@
+@space: 16px;
+
+.gpa-search-wrapper {
+  position: relative;
+  margin-bottom: @space;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+
+  .gap-search-form {
+    flex-wrap: wrap;
+    gap: @space;
+    padding: @space;
+
+    .gap-search-form-item {
+      flex: 1;
+      min-width: 250px;
+      margin: 0;
+    }
+  }
+
+  .gap-search-opt {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: content-box;
+    padding: 0 @space @space 0;
+    background-color: #fff;
+
+    .gap-icon-down {
+      margin-left: 4px;
+      transform-origin: center;
+      transition: 0.3s;
+
+      &.gap-active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

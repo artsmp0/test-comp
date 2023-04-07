@@ -1,0 +1,17 @@
+import 'ant-design-vue/es/form/style/css';
+import 'ant-design-vue/es/button/style/css';
+import 'ant-design-vue/es/cascader/style/css';
+import 'ant-design-vue/es/input/style/css';
+import 'ant-design-vue/es/checkbox/style/css';
+import 'ant-design-vue/es/date-picker/style/css';
+import 'ant-design-vue/es/input-number/style/css';
+import 'ant-design-vue/es/rate/style/css';
+import 'ant-design-vue/es/select/style/css';
+import 'ant-design-vue/es/slider/style/css';
+import 'ant-design-vue/es/switch/style/css';
+import 'ant-design-vue/es/time-picker/style/css';
+import 'ant-design-vue/es/tree-select/style/css';
+import 'ant-design-vue/es/upload/style/css';
+import 'ant-design-vue/es/radio/style/css';
+import 'ant-design-vue/es/image/style/css';
+import './index.css';

@@ -1,10 +1,11 @@
 import type { App } from 'vue';
 import { GpaTable } from './table';
 import { GpaTime } from './time';
+import { GpaForm } from './form';
 
-export { GpaTable, GpaTime };
+export { GpaTable, GpaTime, GpaForm };
 
-const components = [GpaTable, GpaTime];
+const components = [GpaTable, GpaTime, GpaForm];
 export function install(app: App) {
   components.forEach(item => {
     if (item.install!) {
