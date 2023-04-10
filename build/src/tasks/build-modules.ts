@@ -6,21 +6,35 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import esbuild from 'rollup-plugin-esbuild';
 import { genExternal } from '../utils';
 import { BuildParams } from '../utils/types';
+import glob from 'fast-glob';
 
 export const buildModules = ({ pkgJson, outputEs, outputLib, srcRoot }: BuildParams) => {
   return async function buildModulesTask() {
-    const entry = [path.resolve(srcRoot, 'index.ts')];
+    const entry = [
+      ...(await glob('**/*.{ts,vue}', {
+        absolute: true,
+        onlyFiles: true,
+        cwd: srcRoot,
+      })),
+    ].filter(path => !(path.includes('style') || path.includes('resolver')));
+    console.log('genExternal(pkgJson, { full: true }): ', genExternal(pkgJson, { full: true }));
+
     const bundle = await rollup({
       input: entry,
       treeshake: true,
       plugins: [
         vue(),
         vueJsx(),
-        nodeResolve(),
+        nodeResolve({
+          extensions: ['.mjs', '.js', '.json', '.ts'],
+        }),
         esbuild({
           sourceMap: true,
           treeShaking: true,
           target: 'esnext',
+          loaders: {
+            '.vue': 'ts',
+          },
         }),
       ],
       external: genExternal(pkgJson, { full: true }),
@@ -36,15 +50,15 @@ export const buildModules = ({ pkgJson, outputEs, outputLib, srcRoot }: BuildPar
         sourcemap: true,
         entryFileNames: `[name].mjs`,
       }),
-      bundle.write({
-        format: 'cjs',
-        dir: outputLib,
-        exports: 'named',
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-        sourcemap: true,
-        entryFileNames: `[name].js`,
-      }),
+      // bundle.write({
+      //   format: 'cjs',
+      //   dir: outputLib,
+      //   exports: 'named',
+      //   preserveModules: true,
+      //   preserveModulesRoot: 'src',
+      //   sourcemap: true,
+      //   entryFileNames: `[name].js`,
+      // }),
     ]);
   };
 };
