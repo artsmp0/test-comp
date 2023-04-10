@@ -17,6 +17,7 @@
     "@gupo/eslint-config": "^1.0.0",
     "@histoire/plugin-vue": "^0.15.8",
     "@vitejs/plugin-vue": "^4.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "ant-design-vue": "^3.2.16",
     "histoire": "^0.15.9",
     "less": "^4.1.3",

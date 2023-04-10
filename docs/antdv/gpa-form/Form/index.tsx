@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Tooltip } from 'ant-design-vue';
-import { useFormConfig } from '@gupo/antdv-components/es/form';
 import { PlusOutlined, LoadingOutlined, InboxOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
+import { useFormConfig } from '@gupo/antdv-components/es/form';
 
 export const useDataSync = (params: any) => {
   const addForm = useFormConfig(

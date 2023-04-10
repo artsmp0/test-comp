@@ -1,5 +1,3 @@
-import { NOOP } from '@vue/shared';
-
 import type { App, Directive } from 'vue';
 import type { SFCInstallWithContext, SFCWithInstall } from './typescript';
 
@@ -36,7 +34,7 @@ export const withInstallDirective = <T extends Directive>(directive: T, name: st
 };
 
 export const withNoopInstall = <T>(component: T) => {
-  (component as SFCWithInstall<T>).install = NOOP;
+  (component as SFCWithInstall<T>).install = () => undefined;
 
   return component as SFCWithInstall<T>;
 };
