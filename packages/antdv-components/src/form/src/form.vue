@@ -1,31 +1,27 @@
-<script setup lang="tsx">
-import { ref, computed, reactive } from 'vue';
-import { formInheritEvents, formItemEmits, formItemProps } from './form';
+<script setup lang="ts">
+import { computed, shallowRef } from 'vue';
+import { formItemProps } from './form';
 import FormItem from './components/form-item.vue';
-import { Form, FormInstance } from 'ant-design-vue';
+import type { FormInstance } from 'ant-design-vue';
+import { Form } from 'ant-design-vue';
 import SearchOpt from './components/search-opt.vue';
 import { useSearchForm } from './hooks';
-import { Recordable } from '../../utils';
+import type { Recordable } from '../../utils';
 
 const props = defineProps(formItemProps);
-const emits = defineEmits([...formInheritEvents, ...formItemEmits]);
+const emits = defineEmits(['submit', 'searchReset', 'updateModel', 'cancel', 'finish']);
 
-const $form = ref<FormInstance>();
+const $form = shallowRef<FormInstance>();
 
-const _formData = reactive(
-  // 初始化 formItem 每一项数据，默认值为 undefined
-  props.itemConfigs.reduce((res, cur) => {
-    res[cur.key] = undefined;
-    return res;
-  }, {} as Recordable)
-);
-const formDataValue = computed(() => props.formData || _formData);
-const updateValue = (data: Recordable) => {
-  if (props.formData) {
-    emits('update:formData', { ...props.formData, ...data });
-  } else {
-    Object.assign(_formData, data);
-  }
+const model = computed(() => props.formData);
+
+const handleUpdateValue = (data: Recordable) => {
+  emits('updateModel', { ...props.formData, ...data });
+};
+
+const handleReset = () => {
+  $form.value?.resetFields();
+  emits('searchReset');
 };
 
 const { searchLayout, isOpen, itemConfigs, searchWrapperStyle, isShowToggleBtn, searchBoxWidth } = useSearchForm(props, $form);
@@ -41,22 +37,25 @@ defineExpose({
       ref="$form"
       :layout="searchLayout"
       :label-wrap="true"
-      :model="formDataValue"
+      :model="model"
       :rules="rules"
       :label-col="labelCol"
       :wrapper-col="wrapperCol"
       v-bind="$attrs"
       :class="props.searchBar && 'gap-search-form'"
-      v-on="formInheritEvents.reduce((events, eventName) => (events[eventName] = (...event:any) => emits(eventName, ...event)) && events, {} as Recordable)"
+      @finish="emits('finish', $event)"
+      @submit="emits('submit', $event)"
     >
       <FormItem
         v-for="(item, index) in itemConfigs"
         :key="index"
+        :loading="props.loading"
+        :allow-clear="props.allowClear"
         :item="item"
         :class="props.searchBar && 'gap-search-form-item'"
-        :form-data="formDataValue"
-        @update:formData="updateValue"
-        @cancel="$emit('cancel', formDataValue)"
+        :model="model"
+        @update-model="handleUpdateValue"
+        @cancel="$emit('cancel', model)"
       />
       <SearchOpt
         v-if="props.searchBar"
@@ -64,10 +63,10 @@ defineExpose({
         class="gap-search-form-item"
         :show-toggle="isShowToggleBtn"
         :box-width="searchBoxWidth"
-        @reset="$form?.resetFields()"
-        @search="$emit('submit', _formData)"
+        @reset="handleReset"
+        @search="emits('submit', props.formData)"
       />
-      <slot name="footer" :data="formDataValue" />
+      <slot name="footer" :data="model" />
     </Form>
   </div>
 </template>

@@ -5,7 +5,7 @@ import cleanCss from 'gulp-clean-css';
 import glob from 'fast-glob';
 import { rollup } from 'rollup';
 import esbuild from 'rollup-plugin-esbuild';
-import { BuildParams } from '../utils/types';
+import type { BuildParams } from '../utils/types';
 
 export const buildStyle = (buildParams: BuildParams) => {
   return async function buildStyleTask() {

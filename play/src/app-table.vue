@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { TableColumns } from '@gupo/antdv-components/es/gp-table/src/types';
+import type { TableColumns } from '@gupo/antdv-components/es/gp-table/src/types';
 import { ConfigProvider } from 'ant-design-vue';
 import { ref } from 'vue';
 

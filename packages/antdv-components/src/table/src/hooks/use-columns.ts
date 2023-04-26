@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash-es';
-import { computed, InjectionKey, provide, shallowRef, ShallowRef, WritableComputedRef } from 'vue';
-import { GpTableProps } from '../table';
+import type { InjectionKey, ShallowRef, WritableComputedRef } from 'vue';
+import { computed, provide, shallowRef } from 'vue';
+import type { GpTableProps } from '../table';
 import type { TableColumns } from '../types';
 
 export const columnSettingKey = Symbol() as InjectionKey<{

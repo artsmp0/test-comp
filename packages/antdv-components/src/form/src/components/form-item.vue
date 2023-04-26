@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formItemEmits, formItemProps, type ItemConfig, type ItemType } from '../form';
+import type { ItemConfigs, ItemTypePropsMap } from '../form';
 import {
   Cascader,
   Checkbox,
@@ -15,41 +15,37 @@ import {
   TreeSelect,
   Upload,
   RadioGroup,
-  RadioButton,
   type UploadProps,
+  Textarea,
+  InputPassword,
   Button,
   Image,
 } from 'ant-design-vue';
-import { computed, ref, type PropType } from 'vue';
+import { ref } from 'vue';
 import type { FileType } from 'ant-design-vue/es/upload/interface';
 import type { ShowSearchType } from 'ant-design-vue/es/cascader';
-import { Recordable } from '../../../utils';
+import type { Recordable } from '../../../utils';
 
 const FormItem = Form.Item;
 
-const props = defineProps({
-  ...formItemProps,
-  item: {
-    type: Object as PropType<ItemConfig>,
-    default: () => ({}),
-  },
-  formData: {
-    type: Object,
-    default: () => ({}),
-  },
-});
+const props = defineProps<{
+  loading?: boolean;
+  allowClear?: boolean;
+  item: ItemConfigs[number];
+  model: Recordable;
+}>();
 
-const emits = defineEmits([...formItemEmits]);
+const emits = defineEmits(['updateModel', 'cancel']);
 
-const normalComponents: Recordable = {
+const normalComponents = {
   input: Input,
-  'input.password': Input.Password,
-  'input.textarea': Input.TextArea,
+  inputPassword: InputPassword,
+  textarea: Textarea,
   inputNumber: InputNumber,
   datePicker: DatePicker,
-  'datePicker.rangePicker': DatePicker.RangePicker,
+  rangePicker: DatePicker.RangePicker,
   timePicker: TimePicker,
-  'timePicker.timeRangePicker': TimePicker.TimeRangePicker,
+  timeRangePicker: TimePicker.TimeRangePicker,
   rate: Rate,
   slider: Slider,
   treeSelect: TreeSelect,
@@ -61,35 +57,35 @@ const compositeComponents = {
   select: Select,
   switch: Switch,
   upload: Upload,
-  'upload.dragger': Upload.Dragger,
+  uploadDragger: Upload.Dragger,
 };
 
 // 操作按钮区域 wrapperCol
-const formatterOperationWrapperCol = computed(() =>
-  Object.values(props.operationWrapperCol).length ? props.operationWrapperCol : { offset: props.labelCol?.span, span: props.wrapperCol?.span }
-);
+// const formatterOperationWrapperCol = computed(() =>
+//   Object.values(props.operationWrapperCol).length ? props.operationWrapperCol : { offset: props.labelCol?.span, span: props.wrapperCol?.span }
+// );
 
 const updateValue = (value: unknown) => {
-  emits('update:formData', value);
+  emits('updateModel', value);
 };
 
 // 定义单独配置
-const generateProps = (item: ItemConfig) => {
+const generateProps = (item: ItemConfigs[number]) => {
   const formatLabel = typeof item.label === 'string' ? item.label : '';
   const placeholder = item.placeholder;
   // 部分特殊的组件需要提前加一些额外的配置
-  const componentMap: Partial<Record<ItemType, Recordable>> = {
+  const componentMap: Partial<Record<keyof ItemTypePropsMap, Recordable>> = {
     input: {
       placeholder: placeholder || '请输入' + formatLabel,
     },
     inputNumber: {
       placeholder: placeholder || '请输入' + formatLabel,
     },
-    'input.password': {
+    inputPassword: {
       placeholder: placeholder || '请输入' + formatLabel,
       autocomplete: 'off',
     },
-    'input.textarea': {
+    textarea: {
       placeholder: placeholder || '请输入' + formatLabel,
     },
     treeSelect: {
@@ -100,14 +96,15 @@ const generateProps = (item: ItemConfig) => {
       filterOption: selectFilterOption,
     },
     cascader: {
-      placeholder: '请选择' + formatLabel,
-      showSearch: item?.props?.showSearch ? cascaderFilterOption : false,
+      placeholder: placeholder || '请选择' + formatLabel,
+      showSearch: cascaderFilterOption,
     },
   };
+
   return {
     ...componentMap[item.type],
     name: item.key, // 表单验证需要，重置表单也需要
-    ...item?.props,
+    ...(item?.props as object),
   };
 };
 
@@ -144,106 +141,100 @@ const setVisible = (value: boolean) => {
 </script>
 
 <template>
-  <FormItem
-    :name="item.key"
-    :wrapper-col="item.type === 'operation' || !item.label ? formatterOperationWrapperCol : { ...wrapperCol }"
-    :label="item?.label"
-    v-bind="item?.formItemProps"
-  >
+  <FormItem :name="item.key" :label="item?.label" v-bind="item?.formItemProps">
     <!-- 下面定义的component类型 -->
     <template v-if="Object.keys(normalComponents).includes(item.type)">
       <Component
-        :is="normalComponents[item.type]"
-        :value="formData[item.key]"
+        :is="normalComponents[item.type as keyof typeof normalComponents]"
         :allow-clear="allowClear"
+        :value="model[item.key]"
         v-bind="generateProps(item) || {}"
         @update:value="updateValue({ [item.key]: $event })"
       />
     </template>
     <!-- radio -->
-    <template v-else-if="item.type == 'radio'">
-      <RadioGroup :value="props.formData[item.key]" v-bind="generateProps(item) || {}" @update:value="updateValue({ [item.key]: $event })">
-        <RadioButton v-for="o in item.props?.options" :key="o.value" :value="o.value">{{ o.label }}</RadioButton>
+    <template v-else-if="item.type == 'radioGroup'">
+      <RadioGroup :value="props.model[item.key]" v-bind="generateProps(item) || {}" @update:value="updateValue({ [item.key]: $event })">
+        <!-- <template v-if="item.props && typeof item.props.options?.[0] === 'object'">
+                    <RadioButton v-for="o in item.props.options" :key="" :value="o.value">{{ o.label }}</RadioButton>
+                </template> -->
       </RadioGroup>
     </template>
     <!-- select -->
     <template v-else-if="item.type === 'select'">
       <Component
         :is="compositeComponents.select"
-        :value="formData[item.key]"
         :allow-clear="allowClear"
+        :value="model[item.key]"
         v-bind="generateProps(item) || {}"
         @update:value="updateValue({ [item.key]: $event })"
-        ><template v-if="item?.props?.option" #option="option">
-          <slot name="option" :option="option" :data="formData">
+      >
+        <template v-if="item?.props?.option" #option="option">
+          <slot :data="model" name="option" :option="option">
             <Component :is="item?.props?.option?.(option)" />
-          </slot> </template
-      ></Component>
+          </slot>
+        </template>
+      </Component>
     </template>
     <!-- switch -->
     <template v-else-if="item.type === 'switch'">
-      <Component
-        :is="compositeComponents.switch"
-        :checked="formData[item.key]"
-        v-bind="item?.props || {}"
-        @update:checked="updateValue({ [item.key]: $event })"
-      />
+      <Component :is="compositeComponents.switch" :checked="model[item.key]" v-bind="item?.props || {}" @update:checked="updateValue({ [item.key]: $event })" />
     </template>
     <template v-else-if="item.type === 'upload'">
       <Component
         :is="compositeComponents.upload"
-        :file-list="formData[item.key]"
+        :file-list="model[item.key]"
         v-bind="item?.props || {}"
-        @update:file-list="updateValue({ [item.key]: $event })"
         v-on="{
-          preview: item.props?.onPreview || handlePreview,
+          preview: handlePreview,
         }"
+        @update:file-list="updateValue({ [item.key]: $event })"
       >
-        <slot name="uploadContent" :data="formData">
+        <slot :data="model" name="uploadContent">
           <template v-if="typeof item.props?.uploadContent === 'string'">
             {{ item?.props?.uploadContent }}
           </template>
           <template v-else>
-            <Component :is="item.props?.uploadContent" v-bind="item.props?.uploadContentProps || {}" />
+            <Component :is="item.props?.uploadContent" />
           </template>
         </slot>
         <Image
-          :style="{ display: 'none' }"
           :preview="{
             visible: previewVisible,
             onVisibleChange: setVisible,
           }"
           :src="previewImage"
+          :style="{ display: 'none' }"
         />
       </Component>
     </template>
-    <template v-else-if="item.type === 'upload.dragger'">
+    <template v-else-if="item.type === 'uploadDragger'">
       <Component
-        :is="compositeComponents['upload.dragger']"
-        :file-list="formData[item.key]"
+        :is="compositeComponents.uploadDragger"
+        :file-list="model[item.key]"
         v-bind="item?.props || {}"
         @update:file-list="updateValue({ [item.key]: $event })"
       >
-        <slot name="uploadContent" :data="formData">
+        <slot :data="model" name="uploadContent">
           <template v-if="typeof item.props?.uploadContent === 'string'">
             {{ item?.props?.uploadContent }}
           </template>
           <template v-else>
-            <Component :is="item.props?.uploadContent" v-bind="item.props?.uploadContentProps || {}" />
+            <Component :is="item.props?.uploadContent" />
           </template>
         </slot>
       </Component>
     </template>
     <!-- 自定义组件 -->
     <template v-else-if="item.type === 'custom'">
-      <Component :is="item.component" :model-value="formData[item.key]" v-bind="item?.props || {}" @update:modelValue="updateValue({ [item.key]: $event })" />
+      <Component :is="item.component" :model-value="model[item.key]" v-bind="item?.props || {}" @update:modelValue="updateValue({ [item.key]: $event })" />
     </template>
     <!-- 提交按钮 -->
     <div v-else-if="item.type === 'operation'" :style="item.btnWrapperStyle">
-      <Button v-if="item.cancelButton" v-bind="item.cancelButton.props" @click="$emit('cancel', $event)">
+      <Button v-if="item.cancelButton" v-bind="item.cancelButton.props" @click="emits('cancel', $event)">
         {{ item.cancelButton.text || '取消' }}
       </Button>
-      <Button v-if="item.submitButton" type="primary" html-type="submit" :loading="loading" v-bind="item.submitButton.props">
+      <Button v-if="item.submitButton" html-type="submit" :loading="props.loading" type="primary" v-bind="item.submitButton.props">
         {{ item.submitButton.text || '提交' }}
       </Button>
     </div>

@@ -1,8 +1,9 @@
 import { useDebounceFn } from '@vueuse/core';
-import { TableProps } from 'ant-design-vue/es';
-import { computed, getCurrentInstance, nextTick, onUnmounted, Ref, ref, toRefs, watchEffect, WritableComputedRef } from 'vue';
-import { Recordable } from '../../../utils';
-import { GpTableProps } from '../table';
+import type { TableProps } from 'ant-design-vue/es';
+import type { Ref, WritableComputedRef } from 'vue';
+import { computed, getCurrentInstance, nextTick, onUnmounted, ref, toRefs, watchEffect } from 'vue';
+import type { Recordable } from '../../../utils';
+import type { GpTableProps } from '../table';
 
 type Nullable<T> = T | null;
 export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>, dataSource: WritableComputedRef<Recordable<any>[]>) => {

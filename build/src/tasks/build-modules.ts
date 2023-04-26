@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import esbuild from 'rollup-plugin-esbuild';
 import { genExternal } from '../utils';
-import { BuildParams } from '../utils/types';
+import type { BuildParams } from '../utils/types';
 import glob from 'fast-glob';
 
 export const buildModules = ({ pkgJson, outputEs, outputLib, srcRoot }: BuildParams) => {

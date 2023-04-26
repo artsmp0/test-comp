@@ -1,6 +1,6 @@
 import { execa } from 'execa';
 import { src, dest } from 'gulp';
-import { BuildParams } from '../utils/types';
+import type { BuildParams } from '../utils/types';
 
 export const genTypes = ({ pkgRoot, outputEs, outputLib }: BuildParams) => {
   return async function genTypesTask() {

@@ -1,6 +1,6 @@
-import { ExtractPropTypes, PropType } from 'vue';
+import type { ExtractPropTypes, PropType } from 'vue';
 import type { TableProps } from 'ant-design-vue';
-import { HeaderOptions, PaginationKeys, SortConfig, TableColumns } from './types';
+import type { HeaderOptions, PaginationKeys, SortConfig, TableColumns } from './types';
 
 export const tableProps = {
   listApi: {

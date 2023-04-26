@@ -1,6 +1,7 @@
 import { useResizeObserver } from '@vueuse/core';
 import type { FormInstance } from 'ant-design-vue';
-import { CSSProperties, Ref, computed, onActivated, onDeactivated, onMounted, ref, shallowRef, watch } from 'vue';
+import type { CSSProperties, Ref } from 'vue';
+import { computed, onActivated, onDeactivated, onMounted, ref, shallowRef, watch } from 'vue';
 import type { GpaFormProps, ItemConfig } from '../form';
 
 /**

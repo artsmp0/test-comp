@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild';
 import { genExternal } from '../utils';
-import { BuildParams } from '../utils/types';
+import type { BuildParams } from '../utils/types';
 
 const build = ({ output, pkgJson, srcRoot, pkgCamelName }: BuildParams) => {
   return async (minify: boolean) => {

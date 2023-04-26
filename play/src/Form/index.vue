@@ -1,95 +1,64 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import { useDataSync } from './index.jsx';
-import { onMounted, reactive, ref } from 'vue';
-import { message } from 'ant-design-vue';
-import { GpaFormInstance } from '../../../packages/antdv-components/src/form';
+import type { GpaFormInstance } from '../../../packages/antdv-components/src/form';
+import { shallowRef } from 'vue';
 
-// 需要用到监听方法，传参选项传参params
-const params = reactive({
-  addressOption: [] as any,
-  uploadChange: (info: any) => onChange(info),
-  uploadLoading: false,
-  imageUrl: '',
-});
+const form = useDataSync({});
 
-const { addForm } = useDataSync(params);
-
-const $globalForm = ref<GpaFormInstance>();
-
-onMounted(() => {
-  getConfigDetails();
-  getOption();
-});
-const validate = (...e: any) => {
-  console.log('addForm.validate :>> ', ...e);
-};
-const customSubmit = () => {
-  $globalForm.value?.formIns?.validateFields?.().then(() => {
-    console.log('addForm.formData :>> ', addForm.formData);
-  });
-};
-
-const onFinish = () => {
-  console.log('addForm.formData :>> ', addForm.formData);
-};
-
-const onCancel = () => {
-  console.log('已取消');
-};
+const $globalForm = shallowRef<GpaFormInstance>();
 
 /** 获取详情赋值：也可以在 useFormConfig 时传递初始值：initialValue */
 const getConfigDetails = () => {
   // 接口返回数据
-  let data = { name: 11, 没用字段: 11 };
+  let data = { name: 'artsmp', 没用字段: 11 };
 
   const { name } = data;
-  Object.assign(addForm.formData, { name });
+  form.updateModel({
+    input: name,
+  });
 };
 
 /** 异步获取下拉框的值 */
 const getOption = () => {
   setTimeout(() => {
-    params.addressOption = [
-      {
-        name: '安徽',
-        code: 'anhui',
+    form.updateConfigs('select', {
+      props: {
+        options: [
+          {
+            label: '浙江',
+            value: 'zhejiang',
+          },
+          {
+            label: '安徽',
+            value: 'anhui',
+          },
+        ],
       },
-      {
-        name: '浙江',
-        code: 'zhejiang',
-      },
-    ];
+    });
   }, 2000);
 };
 
-const onChange = (info: any) => {
-  if (info.file.status === 'uploading') {
-    params.uploadLoading = true;
-    return;
-  }
-  if (info.file.status === 'done') {
-    params.imageUrl = info.file.response.data.url;
-    params.uploadLoading = false;
-  }
-
-  if (info.file.status === 'error') {
-    params.uploadLoading = false;
-    message.error('upload error');
-  }
-};
+getConfigDetails();
+getOption();
 
 const openLink = () => {
   window.open('https://release.group-ds.com/dev-vue3-vite-template-jsadminantvdocs/pages/ecosystem-form.html');
 };
 
-// 测试组件更新
-// setInterval(() => {
-//     params.addressOption = [];
-// }, 2000);
-// function onTestReRender() {
-//     console.log('onTest: ', params.addressOption);
-// }
+const handleCancel = () => {
+  console.log('handleCancel');
+};
+
+const customSubmit = () => {
+  $globalForm.value?.formIns?.validateFields?.().then(() => {
+    console.log('models :>> ', form.models);
+  });
+};
+
+const handleFinish = (v: typeof form.models) => {
+  console.log('finish event: ', v);
+};
 </script>
 
 <template>
@@ -98,14 +67,13 @@ const openLink = () => {
     <div class="p-16 w-1/2 m-auto bg-white">
       <GpaForm
         ref="$globalForm"
-        :rules="addForm.rules"
-        :item-configs="addForm.itemConfigs()"
-        :form-data="addForm.formData"
+        :rules="form.rules"
+        :item-configs="form.configs"
+        :form-data="form.models"
         :label-col="{ span: 4 }"
-        @update:formData="Object.assign(addForm.formData, $event)"
-        @finish="onFinish"
-        @cancel="onCancel"
-        @validate="validate"
+        @update-model="form.updateModel($event)"
+        @cancel="handleCancel"
+        @finish="handleFinish"
       />
       <!-- 自定义按钮 -->
       <AButton type="primary" @click="customSubmit">自定义提交</AButton>

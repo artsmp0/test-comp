@@ -8,6 +8,7 @@
     "jsx": "preserve",
     "noImplicitThis": true,
     "strict": true,
+    "noImplicitAny": false,
     "isolatedModules": true,
     "target": "ESNext",
     "esModuleInterop": true,

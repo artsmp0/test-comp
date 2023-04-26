@@ -1,11 +1,40 @@
-import type { FormProps } from 'ant-design-vue';
-import type { RuleObject } from 'ant-design-vue/es/form';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { CSSProperties, ExtractPropTypes, PropType, VNode } from 'vue';
-import { Recordable } from '../../utils';
+import type {
+  ButtonProps,
+  CascaderProps,
+  CheckboxGroupProps,
+  DatePickerProps,
+  FormItemProps,
+  FormProps,
+  InputNumberProps,
+  RadioGroupProps,
+  RateProps,
+  SelectProps,
+  SliderProps,
+  SwitchProps,
+  TextAreaProps,
+  TimePickerProps,
+  TimeRangePickerProps,
+  TreeSelectProps,
+  UploadProps,
+  InputProps,
+} from 'ant-design-vue';
+import type { RangePickerProps } from 'ant-design-vue/es/date-picker';
+import type { RuleObject } from 'ant-design-vue/es/form';
+import type { DefaultOptionType } from 'ant-design-vue/es/select';
+import type { Recordable } from '../../utils';
+
+export type Rules = Recordable<RuleObject | RuleObject[]>;
+/** 搜索表单配置 */
+export type SearchBar = { defaultOpen: boolean } | boolean;
+/** 表单布局 */
+export type FormLayout = 'inline' | 'horizontal' | 'vertical';
 
 export const formItemProps = {
   formData: {
     type: Object,
+    default: () => ({}),
   },
   /** 左侧label展示所占col：不传可以自适应 */
   labelCol: {
@@ -38,7 +67,7 @@ export const formItemProps = {
   },
   /** 表单配置 */
   itemConfigs: {
-    type: Array as PropType<ItemConfig[]>,
+    type: Array as PropType<Readonly<ItemConfigs>>,
     default: () => {
       return [];
     },
@@ -53,71 +82,68 @@ export const formItemProps = {
     type: [Object, Boolean] as PropType<SearchBar>,
     default: false,
   },
+  /** 搜索按钮loading */
+  searchLoading: Boolean,
+};
+type DeepReadonly<T> = {
+  readonly [P in keyof T]: DeepReadonly<T[P]>;
+};
+export type GpaFormProps = ExtractPropTypes<typeof formItemProps>;
+export type dd = DeepReadonly<SelectProps & { option?: (option: DefaultOptionType) => VNode }>;
+export type ItemTypePropsMap = {
+  // 修复类型报错
+  input: InputProps;
+  inputPassword: InputProps;
+  textarea: TextAreaProps;
+  inputNumber: InputNumberProps;
+  select: SelectProps & { option?: (option: DefaultOptionType) => VNode };
+  checkbox: CheckboxGroupProps;
+  // radio: RadioProps;
+  radioGroup: RadioGroupProps;
+  switch: SwitchProps;
+  datePicker: DatePickerProps;
+  rangePicker: RangePickerProps;
+  timePicker: TimePickerProps;
+  timeRangePicker: TimeRangePickerProps;
+  rate: RateProps;
+  slider: SliderProps;
+  cascader: CascaderProps;
+  treeSelect: TreeSelectProps;
+  upload: UploadProps & { uploadContent?: VNode | (() => VNode) };
+  uploadDragger: UploadProps & { uploadContent?: VNode | (() => VNode) };
+  custom: object;
+  operation: object;
 };
 
-export type GpaFormProps = ExtractPropTypes<typeof formItemProps>;
-
-export const formInheritEvents = ['finish', 'finishFailed', 'submit', 'validate'];
-
-export const formItemEmits = ['cancel', 'update:formData'];
-
-export type Rules = Recordable<RuleObject | RuleObject[]>;
-
-/** 搜索表单配置 */
-export type SearchBar = { defaultOpen: boolean } | boolean;
-
-/** 表单布局 */
-export type FormLayout = 'inline' | 'horizontal' | 'vertical';
-
-export type ItemType =
-  | 'input'
-  | 'input.password'
-  | 'input.textarea'
-  | 'inputNumber'
-  | 'select'
-  | 'checkbox'
-  | 'radio'
-  | 'switch'
-  | 'datePicker'
-  | 'datePicker.rangePicker'
-  | 'timePicker'
-  | 'timePicker.timeRangePicker'
-  | 'rate'
-  | 'slider'
-  | 'cascader'
-  | 'treeSelect'
-  | 'upload'
-  | 'custom'
-  | 'operation'
-  | 'upload.dragger';
-
-export type ItemConfig = {
+export type ItemConfig<Key extends PropertyKey, Type extends string = keyof ItemTypePropsMap, Props extends any = Recordable> = {
   /** 对应字段 */
-  key: string;
+  key: Key;
   /** 标签 */
   label?: string | VNode;
   placeholder?: string;
   /** 表单类型 */
-  type: ItemType;
+  type: Type;
   /** 表单组件的配置 */
-  props?: Recordable;
+  props?: Props;
   /** 表单 item 的配置 */
-  formItemProps?: Recordable;
-  /** 自定义验证 */
+  formItemProps?: FormItemProps;
+  /** 自定义表单 */
   component?: ((props: any) => JSX.Element) | any;
   /** 配置提交按钮 */
   submitButton?: {
     text?: string;
-    props?: Recordable;
+    props?: ButtonProps;
   };
   /** 配置取消按钮按钮 */
   cancelButton?: {
     text?: string;
-    props?: Recordable;
+    props?: ButtonProps;
   };
   btnWrapperStyle?: CSSProperties;
 };
 
-export type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
-};
+export type ItemConfigs<Key extends PropertyKey = string> = {
+  [P in keyof ItemTypePropsMap]: ItemConfig<Key, P, ItemTypePropsMap[P]>;
+}[keyof ItemTypePropsMap][];
+
+export const formEmits = ['submit', 'reset', 'updateModel', 'cancel'];

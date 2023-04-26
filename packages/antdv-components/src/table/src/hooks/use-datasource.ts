@@ -2,7 +2,7 @@ import type { TablePaginationConfig, TableProps } from 'ant-design-vue';
 import type { Recordable } from '../../../utils';
 import type { SorterResult } from 'ant-design-vue/es/table/interface';
 import { computed, getCurrentInstance, ref } from 'vue';
-import { GpTableProps } from '../table';
+import type { GpTableProps } from '../table';
 
 /**
  * 计算行合并的数据

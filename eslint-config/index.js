@@ -22,6 +22,7 @@ module.exports = {
       files: ['*.ts', '*.tsx', '*.vue'],
       rules: {
         'no-undef': 'warn',
+        '@typescript-eslint/consistent-type-imports': 'error',
       },
     },
     {
