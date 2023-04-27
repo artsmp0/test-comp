@@ -63,6 +63,7 @@ defineExpose({
         class="gap-search-form-item"
         :show-toggle="isShowToggleBtn"
         :box-width="searchBoxWidth"
+        :search-loading="props.searchLoading"
         @reset="handleReset"
         @search="emits('submit', props.formData)"
       />

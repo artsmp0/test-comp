@@ -67,7 +67,7 @@ export const formItemProps = {
   },
   /** 表单配置 */
   itemConfigs: {
-    type: Array as PropType<Readonly<ItemConfigs>>,
+    type: Array as PropType<ItemConfigs>,
     default: () => {
       return [];
     },

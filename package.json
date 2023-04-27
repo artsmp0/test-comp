@@ -13,6 +13,8 @@
     "build:antdv": "lerna run build:antdv --scope @gupo/build",
     "dev": "lerna run dev --scope @gupo/play",
     "dev:docs": "lerna run story:dev --scope @gupo/docs",
+    "build:docs": "lerna run story:build --scope @gupo/docs",
+    "preview": "lerna run story:preview --scope @gupo/docs",
     "prepare": "husky install"
   },
   "devDependencies": {

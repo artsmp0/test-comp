@@ -730,14 +730,14 @@
   resolved "https://registry.npmmirror.com/@gar/promisify/-/promisify-1.1.3.tgz"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@histoire/app@^0.15.8":
-  version "0.15.9"
-  resolved "https://registry.npmmirror.com/@histoire/app/-/app-0.15.9.tgz"
-  integrity sha512-fzL4BU2DWvhxhoGI2paa3oPxPiyswnB6EM0vt5GdNbKdMzpM113aEkGGaW7ki6zdDrYLx61l8hyvzjPk7E5Bgw==
+"@histoire/app@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npmmirror.com/@histoire/app/-/app-0.16.1.tgz#57807df1877e52c993eff7f9735f50b237d46fcb"
+  integrity sha512-13komnhVk1Pk0wMmkJKDPWT8RKpA5HfAbeeXSHAq29pvFP9Faq+dAa62g1wqOpoyJD5C7SkI0OPI3eJwJHgTiQ==
   dependencies:
-    "@histoire/controls" "^0.15.8"
-    "@histoire/shared" "^0.15.8"
-    "@histoire/vendors" "^0.15.8"
+    "@histoire/controls" "^0.16.1"
+    "@histoire/shared" "^0.16.1"
+    "@histoire/vendors" "^0.16.0"
     "@types/flexsearch" "^0.7.3"
     flexsearch "0.7.21"
     shiki-es "^0.2.0"
@@ -756,6 +756,21 @@
     "@codemirror/view" "^6.3.0"
     "@histoire/shared" "^0.15.8"
     "@histoire/vendors" "^0.15.8"
+
+"@histoire/controls@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npmmirror.com/@histoire/controls/-/controls-0.16.1.tgz#a1119339adce917895a7a60f37f18e9051b0d3b0"
+  integrity sha512-Ot/J/LPzUexn+fLrJrWu3jUakx9aVSJWKnriiJSmEodAxJq+4mrprX3xS0bnzieud19pJc3mzC/MSD94urTbHA==
+  dependencies:
+    "@codemirror/commands" "^6.1.1"
+    "@codemirror/lang-json" "^6.0.0"
+    "@codemirror/language" "^6.2.1"
+    "@codemirror/lint" "^6.0.0"
+    "@codemirror/state" "^6.1.2"
+    "@codemirror/theme-one-dark" "^6.1.0"
+    "@codemirror/view" "^6.3.0"
+    "@histoire/shared" "^0.16.1"
+    "@histoire/vendors" "^0.16.0"
 
 "@histoire/plugin-vue@^0.15.8":
   version "0.15.8"
@@ -782,10 +797,27 @@
     pathe "^0.2.0"
     picocolors "^1.0.0"
 
+"@histoire/shared@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npmmirror.com/@histoire/shared/-/shared-0.16.1.tgz#9002f4453b190005ddbf16913e21ac329fa7cf07"
+  integrity sha512-bcySHGC6kcZ1U9OZUcBQCROTBygTZ9T9MlqfeGtBtJWXGdmHPZ/64elZOY36O8gUAMF89Q08EIVe5cIQ0SJ3Uw==
+  dependencies:
+    "@histoire/vendors" "^0.16.0"
+    "@types/fs-extra" "^9.0.13"
+    "@types/markdown-it" "^12.2.3"
+    chokidar "^3.5.3"
+    pathe "^0.2.0"
+    picocolors "^1.0.0"
+
 "@histoire/vendors@^0.15.8":
   version "0.15.8"
   resolved "https://registry.npmmirror.com/@histoire/vendors/-/vendors-0.15.8.tgz"
   integrity sha512-RVvJmWlpRHa5dEdcAB+IB8OYKvw2Mv/tXF/Xu42SP2PwKkgQnTkDXmg+2HPMu9Uc+2i0u2cc9Lz+hqvkvS34kQ==
+
+"@histoire/vendors@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.npmmirror.com/@histoire/vendors/-/vendors-0.16.0.tgz#2f92b5ba6b8f835607ada3ab7e27d807236cb02c"
+  integrity sha512-MVr3P2q5Q9UiLJJT99b+j2ABCSerQG4VnUeCr5+eOxyEmoIFz1a0KGJimzqQM0EoVnMQmiaNN3WhuUYG+DWh/w==
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
@@ -3445,7 +3477,7 @@ dateformat@^3.0.0:
   resolved "https://registry.npmmirror.com/dateformat/-/dateformat-3.0.3.tgz"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
-dayjs@^1.10.5:
+dayjs@^1.10.5, dayjs@^1.11.7:
   version "1.11.7"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
   integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
@@ -5132,16 +5164,16 @@ header-case@^2.0.4:
     capital-case "^1.0.4"
     tslib "^2.0.3"
 
-histoire@^0.15.9:
-  version "0.15.9"
-  resolved "https://registry.npmmirror.com/histoire/-/histoire-0.15.9.tgz"
-  integrity sha512-Mb9185Sq/SckVhtHpUdf3dqSrAdf9HDsOFbTcBIZ6W9TYCdsSLY5kLzPU2sHaHHM/myxh5DC+9SLBaTFeNJSug==
+histoire@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.npmmirror.com/histoire/-/histoire-0.16.1.tgz#4e64a0958f496a55693df81ae706057485cf6477"
+  integrity sha512-TIzJ0Wqe8epfTYMd7yuS0Zcuy86ysJ5t4p6qt0zjHAinoNgEH2M9biHtuKQzd96/QuUy3oc2dcXiFLFSZGdSyw==
   dependencies:
     "@akryum/tinypool" "^0.3.1"
-    "@histoire/app" "^0.15.8"
-    "@histoire/controls" "^0.15.8"
-    "@histoire/shared" "^0.15.8"
-    "@histoire/vendors" "^0.15.8"
+    "@histoire/app" "^0.16.1"
+    "@histoire/controls" "^0.16.1"
+    "@histoire/shared" "^0.16.1"
+    "@histoire/vendors" "^0.16.0"
     "@types/flexsearch" "^0.7.3"
     "@types/markdown-it" "^12.2.3"
     birpc "^0.1.1"
@@ -5154,7 +5186,7 @@ histoire@^0.15.9:
     fs-extra "^10.0.1"
     globby "^13.1.1"
     gray-matter "^4.0.3"
-    jiti "^1.16.0"
+    jiti "^1.18.2"
     jsdom "^20.0.3"
     markdown-it "^12.3.2"
     markdown-it-anchor "^8.6.2"
@@ -5838,9 +5870,9 @@ jake@^10.8.5:
     filelist "^1.0.1"
     minimatch "^3.0.4"
 
-jiti@^1.16.0:
+jiti@^1.18.2:
   version "1.18.2"
-  resolved "https://registry.npmmirror.com/jiti/-/jiti-1.18.2.tgz"
+  resolved "https://registry.npmmirror.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
   integrity sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==
 
 joycon@^3.1.1:

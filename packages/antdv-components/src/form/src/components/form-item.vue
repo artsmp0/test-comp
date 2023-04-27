@@ -20,6 +20,7 @@ import {
   InputPassword,
   Button,
   Image,
+  Space,
 } from 'ant-design-vue';
 import { ref } from 'vue';
 import type { FileType } from 'ant-design-vue/es/upload/interface';
@@ -195,7 +196,7 @@ const setVisible = (value: boolean) => {
             {{ item?.props?.uploadContent }}
           </template>
           <template v-else>
-            <Component :is="item.props?.uploadContent" />
+            <Component :is="item.props?.uploadContent as any" />
           </template>
         </slot>
         <Image
@@ -220,7 +221,7 @@ const setVisible = (value: boolean) => {
             {{ item?.props?.uploadContent }}
           </template>
           <template v-else>
-            <Component :is="item.props?.uploadContent" />
+            <Component :is="item.props?.uploadContent as any" />
           </template>
         </slot>
       </Component>
@@ -230,13 +231,13 @@ const setVisible = (value: boolean) => {
       <Component :is="item.component" :model-value="model[item.key]" v-bind="item?.props || {}" @update:modelValue="updateValue({ [item.key]: $event })" />
     </template>
     <!-- 提交按钮 -->
-    <div v-else-if="item.type === 'operation'" :style="item.btnWrapperStyle">
+    <Space v-else-if="item.type === 'operation'" :style="item.btnWrapperStyle">
       <Button v-if="item.cancelButton" v-bind="item.cancelButton.props" @click="emits('cancel', $event)">
         {{ item.cancelButton.text || '取消' }}
       </Button>
       <Button v-if="item.submitButton" html-type="submit" :loading="props.loading" type="primary" v-bind="item.submitButton.props">
         {{ item.submitButton.text || '提交' }}
       </Button>
-    </div>
+    </Space>
   </FormItem>
 </template>

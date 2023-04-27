@@ -2,7 +2,7 @@ import { useResizeObserver } from '@vueuse/core';
 import type { FormInstance } from 'ant-design-vue';
 import type { CSSProperties, Ref } from 'vue';
 import { computed, onActivated, onDeactivated, onMounted, ref, shallowRef, watch } from 'vue';
-import type { GpaFormProps, ItemConfig } from '../form';
+import type { GpaFormProps, ItemConfigs } from '../form';
 
 /**
  * 搜索表单相关的处理逻辑
@@ -10,7 +10,7 @@ import type { GpaFormProps, ItemConfig } from '../form';
 export function useSearchForm(props: GpaFormProps, $form: Ref<FormInstance | undefined>) {
   const defaultHeight = 64;
   const emptyBoxCount = ref(1);
-  const itemConfigs = shallowRef<ItemConfig[]>([]);
+  const itemConfigs = shallowRef<ItemConfigs>([]);
 
   watch(
     () => props.itemConfigs,
@@ -28,7 +28,7 @@ export function useSearchForm(props: GpaFormProps, $form: Ref<FormInstance | und
               width: '100%',
             },
           },
-        } as ItemConfig;
+        } as ItemConfigs[number];
       });
       newConfig = newConfig.concat(new Array(emptyBoxCount.value).fill({ key: '', type: 'custom', component: () => <div></div> }));
       itemConfigs.value = newConfig;

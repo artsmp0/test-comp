@@ -1,13 +1,14 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script lang="ts" setup>
 import { DownOutlined } from '@ant-design/icons-vue';
-import { Button } from 'ant-design-vue';
+import { Button, Space } from 'ant-design-vue';
 import { computed } from 'vue';
 
 const props = defineProps<{
   isOpen: boolean;
   showToggle: boolean;
   boxWidth: number;
+  searchLoading?: boolean;
 }>();
 
 const enum Events {
@@ -36,11 +37,13 @@ const isOpen = computed({
 
 <template>
   <div class="gap-search-opt ant-row ant-form-item" :style="{ width: `${props.boxWidth}px` }">
-    <Button @click="emitter(Events.reset)">重置</Button>
-    <Button type="primary" @click="emitter(Events.search)">查询</Button>
-    <Button v-if="props.showToggle" type="link" @click="isOpen = !isOpen">
-      {{ isOpen ? '收起' : '展开' }}
-      <DownOutlined :class="['gap-icon-down', isOpen && 'gap-active']" />
-    </Button>
+    <Space>
+      <Button :loading="props.searchLoading" @click="emitter(Events.reset)">重置</Button>
+      <Button :loading="props.searchLoading" type="primary" @click="emitter(Events.search)">查询</Button>
+      <Button v-if="props.showToggle" type="link" @click="isOpen = !isOpen">
+        {{ isOpen ? '收起' : '展开' }}
+        <DownOutlined :class="['gap-icon-down', isOpen && 'gap-active']" />
+      </Button>
+    </Space>
   </div>
 </template>
