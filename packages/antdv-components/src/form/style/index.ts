@@ -14,4 +14,5 @@ import 'ant-design-vue/es/tree-select/style';
 import 'ant-design-vue/es/upload/style';
 import 'ant-design-vue/es/radio/style';
 import 'ant-design-vue/es/image/style';
+import 'ant-design-vue/es/space/style';
 import './index.less';

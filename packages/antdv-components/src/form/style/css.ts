@@ -14,4 +14,5 @@ import 'ant-design-vue/es/tree-select/style/css';
 import 'ant-design-vue/es/upload/style/css';
 import 'ant-design-vue/es/radio/style/css';
 import 'ant-design-vue/es/image/style/css';
+import 'ant-design-vue/es/space/style/css';
 import './index.css';

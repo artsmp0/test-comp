@@ -1,6 +1,6 @@
 {
   "name": "@gupoui/antdv",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "shenmengping",
   "files": [
@@ -16,6 +16,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
+
   "peerDependencies": {
     "@ant-design/icons-vue": ">=6",
     "ant-design-vue": ">=3.2.0",
