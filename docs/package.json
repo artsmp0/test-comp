@@ -1,6 +1,6 @@
 {
   "name": "@gupo/docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,13 @@
     "story:preview": "histoire preview --port 4567"
   },
   "dependencies": {
-    "@gupo/antdv-components": "^1.0.0",
+    "@gupo/antdv-components": "^1.0.1",
     "dayjs": "^1.11.7",
     "vant": "^4.1.2",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@gupo/eslint-config": "^1.0.0",
+    "@gupo/eslint-config": "^1.0.1",
     "@histoire/plugin-vue": "^0.15.8",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
