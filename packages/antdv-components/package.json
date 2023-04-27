@@ -1,8 +1,14 @@
 {
-  "name": "@gupo/antdv-components",
+  "name": "gupo-components",
   "version": "1.0.1",
   "license": "MIT",
   "author": "shenmengping",
+  "files": [
+    "dist/",
+    "es/",
+    "lib/",
+    "package.json"
+  ],
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
