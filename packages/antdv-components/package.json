@@ -1,6 +1,6 @@
 {
-  "name": "gupo-components",
-  "version": "1.0.1",
+  "name": "@gupoui/antdv",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "shenmengping",
   "files": [

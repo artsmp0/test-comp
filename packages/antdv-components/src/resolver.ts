@@ -3,7 +3,7 @@ import { kebabCase } from 'unplugin-vue-components';
 
 // 判断是不是服务端渲染
 const isSSR = Boolean(process.env.SSR || process.env.SSG || process.env.VITE_SSR || process.env.VITE_SSG);
-const name = '@gupo/antdv-components';
+const pkgName = '@gupoui/antdv';
 
 // 服务端渲染使用 cjs 模块，反之使用 esm 模块
 const moduleType = isSSR ? 'lib' : 'es';
@@ -22,9 +22,9 @@ function getSideEffects(dirName: string, options: GpResolverOptions): SideEffect
 
   // 获取到副作用的路径
   if (importStyle === 'less') {
-    return `${name}/${moduleType}/${dirName}/style/index`;
+    return `${pkgName}/${moduleType}/${dirName}/style/index`;
   }
-  return `${name}/${moduleType}/${dirName}/style/css`;
+  return `${pkgName}/${moduleType}/${dirName}/style/css`;
 }
 
 export function GupoAntdvResolver(options: GpResolverOptions = { importStyle: 'css' }): ComponentResolver {
@@ -38,7 +38,7 @@ export function GupoAntdvResolver(options: GpResolverOptions = { importStyle: 'c
           // 组件名称
           name: name,
           // 从哪个路径导入，es/lib
-          from: `@gupo/antdv-components/${moduleType}`,
+          from: `${pkgName}/${moduleType}`,
           // 根据组件名称获取到对应的 css 导入路径。GpTable => es/gp-table/style/index
           sideEffects: getSideEffects(kebabCase(name.slice(3)), options),
         };
