@@ -1,4 +1,3 @@
-import path from 'path';
 import { rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -8,7 +7,7 @@ import { genExternal } from '../utils';
 import type { BuildParams } from '../utils/types';
 import glob from 'fast-glob';
 
-export const buildModules = ({ pkgJson, outputEs, outputLib, srcRoot }: BuildParams) => {
+export const buildModules = ({ pkgJson, outputEs, srcRoot }: BuildParams) => {
   return async function buildModulesTask() {
     const entry = [
       ...(await glob('**/*.{ts,vue}', {

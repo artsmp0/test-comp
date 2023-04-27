@@ -128,7 +128,7 @@ export type ItemConfig<Key extends PropertyKey, Type extends string = keyof Item
   /** 表单 item 的配置 */
   formItemProps?: FormItemProps;
   /** 自定义表单 */
-  component?: ((props: any) => JSX.Element) | any;
+  component?: ((props: any) => VNode) | any;
   /** 配置提交按钮 */
   submitButton?: {
     text?: string;
