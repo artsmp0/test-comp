@@ -15,17 +15,17 @@
   "dependencies": {
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsonc": "^2.7.0",
     "eslint-plugin-markdown": "^3.0.0",
-    "eslint-plugin-vue": "^9.10.0",
+    "eslint-plugin-vue": "^9.11.1",
     "jsonc-eslint-parser": "^2.2.0",
-    "prettier": "^2.8.6",
-    "typescript": "^5.0.2"
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "eslint": "^8.36.0",
-    "prettier": "^2.8.6"
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8"
   }
 }

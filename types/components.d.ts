@@ -12,5 +12,6 @@ declare module '@vue/runtime-core' {
     GpaTable: typeof import('../packages/antdv-components/src/index')['GpaTable'];
     GpaTime: typeof import('../packages/antdv-components/src/index')['GpaTime'];
     GpaForm: typeof import('../packages/antdv-components/src/index')['GpaForm'];
+    GpaEllipsis: typeof import('../packages/antdv-components/src/index')['GpaEllipsis'];
   }
 }

@@ -65,7 +65,7 @@ const handleReload = () => {
       </template>
     </Dropdown>
     <HelpMessage :placement="'top'" help-message="全屏">
-      <ExpandOutlined v-if="props.headerOptions.includes('fullscreen')" class="gp-table-options__icon" :is-fullscreen="isFullscreen" @click="toggle" />
+      <ExpandOutlined v-if="props.headerOptions.includes('fullscreen')" class="gp-table-options__icon" @click="toggle" />
     </HelpMessage>
     <HelpMessage :placement="'top'" help-message="刷新">
       <ReloadOutlined v-if="props.headerOptions.includes('reload')" class="gp-table-options__icon" @click="handleReload" />

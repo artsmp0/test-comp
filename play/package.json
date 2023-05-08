@@ -9,17 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gupo/antdv-components": "^1.0.1"
+    "@gupoui/antdv": "*"
   },
   "devDependencies": {
     "@ant-design/icons-vue": "^6.1.0",
-    "@vitejs/plugin-vue": "^4.1.0",
-    "ant-design-vue": "^3.2.16",
-    "typescript": "^5.0.2",
+    "@vitejs/plugin-vue": "^4.2.1",
+    "ant-design-vue": "^3.2.20",
+    "typescript": "^5.0.4",
+    "unocss": "^0.51.12",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.2.1",
-    "vite-plugin-inspect": "^0.7.18",
-    "vite-plugin-mkcert": "^1.13.4",
+    "vite": "^4.3.5",
+    "vite-plugin-inspect": "^0.7.25",
+    "vite-plugin-mkcert": "^1.15.0",
     "vue": "^3.2.47"
   }
 }

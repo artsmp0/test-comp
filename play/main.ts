@@ -1,5 +1,8 @@
 import { createApp } from 'vue';
 import App from './src/app.vue';
+// main.ts
+import 'virtual:uno.css';
+import './index.css';
 (async () => {
   // const apps = import.meta.glob('./src/*.vue');
   // const name = location.pathname.replace(/^\//, '') || 'App';

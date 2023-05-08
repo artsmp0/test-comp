@@ -7,7 +7,8 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
 import path from 'path';
-console.log('======', path.resolve(__dirname, '../packages/antdv-components/src/$2'));
+import UnoCSS from 'unocss/vite';
+
 const base = path.resolve(__dirname, '../packages/antdv-components/src');
 export default defineConfig(async ({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -15,18 +16,16 @@ export default defineConfig(async ({ mode }) => {
     resolve: {
       alias: [
         {
-          find: /^@gupo\/antdv-components(\/(es|lib))?$/,
+          find: /^@gupoui\/antdv(\/(es|lib))?$/,
           replacement: path.resolve(base, 'index.ts'),
           customResolver(resolve) {
-            console.log('++++++++++++++resolve: ', resolve);
             return resolve;
           },
         },
         {
-          find: /^@gupo\/antdv-components\/(es|lib)\/(.*)$/,
-          replacement: `${base}/$2`,
+          find: /^@gupoui\/antdv\/(es|lib)\/(.*)$/,
+          replacement: `${base}/$2.ts`,
           customResolver(resolve) {
-            console.log('=============resolve: ', resolve);
             return resolve;
           },
         },
@@ -44,6 +43,7 @@ export default defineConfig(async ({ mode }) => {
       https: !!env.HTTPS,
     },
     plugins: [
+      UnoCSS(),
       vue(),
       vueJsx(),
       Components({
