@@ -32,13 +32,14 @@ export const useScroll = (tableWrapper: Ref<HTMLDivElement | undefined>, dataSou
     const antPaginationH = antPagination?.clientHeight ?? 0;
     const antFooterH = antFooter?.clientHeight ?? 0;
     const gpTableHeadH = gpTableHead?.clientHeight ?? 0;
-    const tableHeight = tableWrapper.value?.clientHeight ?? 0;
-    if (!tableHeight) return;
-    // TODO 表格padding需要动态计算
-    const calcH = tableHeight - gpTableHeadH - antTableHeadH - antPaginationH - antFooterH - marginBottom - marginTop - 32;
+    let tableHeight = tableWrapper.value?.clientHeight ?? 0;
+    const style = tableWrapper.value ? getComputedStyle(tableWrapper.value) : undefined;
+    if (!tableHeight || !style) return;
+    tableHeight -= parseInt(style?.paddingTop) + parseInt(style?.paddingBottom);
+    const calcH = tableHeight - gpTableHeadH - antTableHeadH - antPaginationH - antFooterH - marginBottom - marginTop - 2;
     y.value = calcH > MIN_HEIGHT ? calcH : MIN_HEIGHT;
   };
-  const debounceCalc = useDebounceFn(calcDynamicHeight, 200);
+  const debounceCalc = useDebounceFn(calcDynamicHeight, 30);
   const resizeObserver: ResizeObserver | undefined = new ResizeObserver(debounceCalc);
   const isFirst = ref(true);
   const init = async () => {

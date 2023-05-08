@@ -63,7 +63,7 @@ export function useDataSource() {
   const { current, pageSize, total: pgTotalKey, list } = props.paginationKeys;
   const filterParams = ref<Recordable>({
     [current]: (pagination && (pagination as TablePaginationConfig)?.current) || 1,
-    [pageSize]: (pagination && (pagination as TablePaginationConfig)?.pageSize) || 100,
+    [pageSize]: (pagination && (pagination as TablePaginationConfig)?.pageSize) || 20,
   });
 
   /**
