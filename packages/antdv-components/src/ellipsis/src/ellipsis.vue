@@ -24,6 +24,7 @@ const $text = ref<HTMLDivElement>();
 const isOverflow = ref(true);
 const collapsedHeight = ref(0);
 const scrollHeight = ref(0);
+const lineHight = ref(0);
 watch($text, async v => {
   if (v) {
     await nextTick();
@@ -31,6 +32,7 @@ watch($text, async v => {
     const overHeight = $text.value?.scrollHeight;
     collapsedHeight.value = actualHeight!;
     scrollHeight.value = overHeight!;
+    lineHight.value = parseFloat(getComputedStyle($text.value!).lineHeight);
     if (actualHeight && overHeight && actualHeight < overHeight) {
       isOverflow.value = true;
     } else {
@@ -46,7 +48,9 @@ watch($text, async v => {
 const isBlock = ref(false);
 const style = computed(() => ({
   '--line': props.line,
-  display: isBlock.value ? 'initial' : '-webkit-inline-box',
+  // 图标位置需要负的行高，使用margin填充
+  '--icon-height': -lineHight.value + 'px',
+  display: isBlock.value ? 'inline-block' : '-webkit-inline-box',
 }));
 
 const toggleExpand = () => {

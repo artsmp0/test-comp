@@ -8,7 +8,7 @@ const longChinese =
 </script>
 
 <template>
-  <div class="mx-auto mt-60 w-400 flex flex-col gap-16">
+  <div class="mx-auto mt-60 w-400 flex flex-col gap-16 text-12">
     <div class="flex">
       <label shrink-0>短文本：</label>
       <GpaEllipsis :text="shortStr" />
