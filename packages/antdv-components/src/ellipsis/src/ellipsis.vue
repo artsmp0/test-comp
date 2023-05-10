@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import { DownCircleOutlined, UpCircleOutlined } from '@ant-design/icons-vue';
 import type { TooltipProps } from 'ant-design-vue';
 import { Tooltip } from 'ant-design-vue';
 import { ref, watch, nextTick, computed } from 'vue';
 
 const props = withDefaults(
   defineProps<{
+    /** 文本 */
     text: string;
     placement?: TooltipProps['placement'];
     line?: number;
@@ -20,15 +22,23 @@ const props = withDefaults(
 
 const $text = ref<HTMLDivElement>();
 const isOverflow = ref(true);
+const collapsedHeight = ref(0);
+const scrollHeight = ref(0);
 watch($text, async v => {
   if (v) {
     await nextTick();
     const actualHeight = $text.value?.offsetHeight;
     const overHeight = $text.value?.scrollHeight;
+    collapsedHeight.value = actualHeight!;
+    scrollHeight.value = overHeight!;
     if (actualHeight && overHeight && actualHeight < overHeight) {
       isOverflow.value = true;
     } else {
       isOverflow.value = false;
+    }
+    if (props.expandTrigger) {
+      await nextTick();
+      $text.value!.style.height = actualHeight + 'px';
     }
   }
 });
@@ -36,13 +46,17 @@ watch($text, async v => {
 const isBlock = ref(false);
 const style = computed(() => ({
   '--line': props.line,
-  display: isBlock.value ? 'initial' : '-webkit-box',
-  cursor: props.expandTrigger ? 'pointer' : 'text',
+  display: isBlock.value ? 'initial' : '-webkit-inline-box',
 }));
 
 const toggleExpand = () => {
   if (!props.expandTrigger) return;
   isBlock.value = !isBlock.value;
+  if (isBlock.value) {
+    $text.value!.style.height = scrollHeight.value + 'px';
+  } else {
+    $text.value!.style.height = collapsedHeight.value + 'px';
+  }
 };
 
 const showTitle = computed(() => {
@@ -57,5 +71,11 @@ const showTitle = computed(() => {
       {{ props.text }}
     </span>
   </Tooltip>
-  <span v-else :title="showTitle" class="gpa-text" :style="style" @click="toggleExpand">{{ props.text }}</span>
+  <span v-else ref="$text" :title="showTitle" class="gpa-text" :style="style">
+    <span v-if="props.expandTrigger" :title="isBlock ? '收起' : '展开'" class="gpa-text-toggle-btn" @click="toggleExpand">
+      <DownCircleOutlined v-if="!isBlock" />
+      <UpCircleOutlined v-else />
+    </span>
+    {{ props.text }}
+  </span>
 </template>

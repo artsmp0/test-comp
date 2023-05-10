@@ -17,5 +17,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "**/__tests__/**", "**/__demos__/**", "**/*.md"]
+  "exclude": ["dist", "es", "lib", "**/__tests__/**", "**/__demos__/**", "**/*.md"]
 }

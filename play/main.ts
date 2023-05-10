@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import App from './src/app.vue';
+import 'ant-design-vue/dist/antd.variable.min.css';
 // main.ts
 import 'virtual:uno.css';
 import './index.css';

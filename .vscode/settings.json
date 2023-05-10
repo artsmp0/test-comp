@@ -1,4 +1,19 @@
 {
-  "cSpell.words": ["histoire"],
-  "references.preferredLocation": "peek"
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": false
+  },
+  "editor.formatOnSave": true,
+  // 显示 eslint 文档
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  // 启用 stylelint 针对与哪些文件校验
+  "stylelint.validate": ["css", "less", "postcss"],
+  // 禁用 vscode 自带验证
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
 }

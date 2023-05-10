@@ -2,9 +2,30 @@
   display: -webkit-box;
   width: 100%;
   overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--line);
 
   /* 避免长串英文溢出的情况 */
   word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--line);
+  transition: height .3s;
+  
+  &::before {
+    float: right;
+    width:0;
+    height: 100%;
+    margin-bottom: -25px;
+    content: "";
+  }
+  
+  
+  .gpa-text-toggle-btn {
+    float: right;
+    clear: both;
+    cursor: pointer;
+    
+    &:hover {
+      color: var(--ant-primary-color);
+    }
+  }
+    
 }
