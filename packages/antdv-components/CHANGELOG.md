@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://codeup.aliyun.com/gupo/node-modules/gupo-components/compare/@gupoui/antdv@0.2.0...@gupoui/antdv@0.2.1) (2023-05-15)
+
+**Note:** Version bump only for package @gupoui/antdv
+
 # 0.2.0 (2023-05-15)
 
 ### Bug Fixes
