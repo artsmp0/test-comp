@@ -1,6 +1,7 @@
 {
   "name": "@gupo/eslint-config",
   "version": "1.0.1",
+  "private": "true",
   "license": "MIT",
   "files": [
     "index.js"

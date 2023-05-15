@@ -5,7 +5,9 @@
 <docs lang="md">
 # 古珀业务组件库
 
-基于 `ant-design-vue 3.x` 的一个公司内部组件库。文档采用 [histoire](https://histoire.dev/) 作为支持, `cmd/ctrl + K` 支持搜索文档喔
+1. 基于 `ant-design-vue 3.x` 的一个公司内部组件库。文档采用 [histoire](https://histoire.dev/) 作为支持。
+2. `cmd/ctrl + K` 支持搜索文档。
+3. 源码地址：https://codeup.aliyun.com/gupo/node-modules/gupo-components/tree/vue3-antdv
 
 ## 安装
 

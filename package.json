@@ -15,7 +15,8 @@
     "dev:docs": "lerna run story:dev --scope @gupo/docs",
     "build:docs": "lerna run story:build --scope @gupo/docs",
     "preview": "lerna run story:preview --scope @gupo/docs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "new-version": "lerna version --no-private --conventional-commits --yes"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
