@@ -6,9 +6,18 @@ export default defineConfig({
   setupFile: './histoire.setup.ts',
   theme: {
     title: 'Gupo组件库',
-    colors: {
-      primary: defaultColors.sky,
+    favicon: 'favicon.svg',
+    logo: {
+      square: '/src/imgs/logo.png',
+      light: '/src/imgs/logo.png',
+      dark: '/src/imgs/logo.png',
     },
+    colors: {
+      primary: defaultColors.orange,
+    },
+    defaultColorScheme: 'light',
+    hideColorSchemeSwitch: true,
+    storeColorScheme: false,
   },
   vite: {
     server: {
@@ -17,6 +26,10 @@ export default defineConfig({
   },
   tree: {
     groups: [
+      {
+        id: 'top',
+        title: '',
+      },
       {
         title: 'Antdv 组件',
         include: file => {
@@ -30,5 +43,11 @@ export default defineConfig({
         },
       },
     ],
+  },
+  defaultStoryProps: {
+    icon: 'carbon:assembly-reference',
+    iconColor: '#00c5a5',
+    responsiveDisabled: true,
+    autoPropsDisabled: true,
   },
 });

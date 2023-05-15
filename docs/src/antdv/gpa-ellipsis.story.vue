@@ -8,7 +8,15 @@ const longChinese =
 </script>
 
 <template>
-  <Story title="文本省略" icon="material-symbols:alarm-add-outline" auto-props-disabled>
+  <Story
+    title="文本省略"
+    icon="octicon:ellipsis-16"
+    auto-props-disabled
+    :layout="{
+      type: 'grid',
+      width: 300,
+    }"
+  >
     <Variant title="短文本">
       <div class="content">
         <GpaEllipsis :text="shortStr" />
