@@ -1,4 +1,4 @@
-import { withInstall } from '../utils';
+import { withInstall } from '@gupo/common';
 import Ellipsis from './src/ellipsis.vue';
 
 Ellipsis.name = 'GpaEllipsis';

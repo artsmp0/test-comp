@@ -21,6 +21,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
+    "@gupo/common": "*",
     "@gupo/eslint-config": "*",
     "eslint": "^8.40.0",
     "husky": "^8.0.3",

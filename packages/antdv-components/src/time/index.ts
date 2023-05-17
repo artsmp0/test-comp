@@ -1,4 +1,4 @@
-import { withInstall } from '../utils';
+import { withInstall } from '@gupo/common';
 import Time from './src/time.vue';
 
 Time.name = 'GpaTime';

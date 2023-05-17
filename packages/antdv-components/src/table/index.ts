@@ -1,4 +1,4 @@
-import { withInstall } from '../utils';
+import { withInstall } from '@gupo/common';
 import Table from './src/table.vue';
 
 Table.name = 'GpaTable';

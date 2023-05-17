@@ -1,4 +1,4 @@
-import { withInstall } from '../utils';
+import { withInstall } from '@gupo/common';
 import Form from './src/form.vue';
 
 Form.name = 'GpaForm';

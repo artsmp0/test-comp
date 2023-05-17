@@ -23,7 +23,7 @@ import type {
 import type { RangePickerProps } from 'ant-design-vue/es/date-picker';
 import type { RuleObject } from 'ant-design-vue/es/form';
 import type { DefaultOptionType } from 'ant-design-vue/es/select';
-import type { Recordable } from '../../utils';
+import type { Recordable } from '@gupo/common';
 
 export type Rules = Recordable<RuleObject | RuleObject[]>;
 /** 搜索表单配置 */

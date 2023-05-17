@@ -25,7 +25,7 @@ import {
 import { ref } from 'vue';
 import type { FileType } from 'ant-design-vue/es/upload/interface';
 import type { ShowSearchType } from 'ant-design-vue/es/cascader';
-import type { Recordable } from '../../../utils';
+import type { Recordable } from '@gupo/common';
 
 const FormItem = Form.Item;
 

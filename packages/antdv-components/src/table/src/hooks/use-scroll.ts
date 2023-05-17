@@ -2,7 +2,7 @@ import { useDebounceFn } from '@vueuse/core';
 import type { TableProps } from 'ant-design-vue/es';
 import type { Ref, WritableComputedRef } from 'vue';
 import { computed, getCurrentInstance, nextTick, onUnmounted, ref, toRefs, watchEffect } from 'vue';
-import type { Recordable } from '../../../utils';
+import type { Recordable } from '@gupo/common';
 import type { GpTableProps } from '../table';
 
 type Nullable<T> = T | null;

@@ -14,6 +14,8 @@ export const genExternal = (pkgJsonPath: string, options: { full?: boolean }) =>
     externals.push(...dependencies);
   }
   return (id: string) => {
+    // 这个包不打算发布，所以直接打包到源码里面
+    if (id.startsWith('@gupo/common')) return false;
     return externals.some(dep => id === dep || (options.full && id.startsWith(`${dep}/`)));
   };
 };

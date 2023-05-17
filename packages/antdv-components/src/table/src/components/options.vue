@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { Space, Dropdown, Menu, MenuItem } from 'ant-design-vue';
 import { useFullscreen } from '@vueuse/core';
-import { defineDict, type Nullable, type Recordable } from '../../../utils';
+import { defineDict, type Nullable, type Recordable } from '@gupo/common';
 import type { SizeType } from 'ant-design-vue/es/config-provider';
 import type { MenuClickEventHandler } from 'ant-design-vue/es/menu/src/interface';
 import { SettingOutlined, ReloadOutlined, ColumnHeightOutlined, ExpandOutlined } from '@ant-design/icons-vue';
 import type { HeaderOptions } from '../types';
 import ColumnSetPopper from './column-set-popper.vue';
 import HelpMessage from './help-message.vue';
-import { onUpdated, toRef } from 'vue';
+import { toRef } from 'vue';
 
 const props = defineProps<{
   container: Nullable<HTMLDivElement>;
@@ -25,7 +25,7 @@ type Emitter = {
 };
 const emitter = defineEmits<Emitter>();
 const container = toRef(props, 'container');
-const { isFullscreen, toggle } = useFullscreen(container);
+const { toggle } = useFullscreen(container);
 
 const colHeightMap = defineDict(
   [

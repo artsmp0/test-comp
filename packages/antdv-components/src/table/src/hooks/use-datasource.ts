@@ -1,5 +1,5 @@
 import type { TablePaginationConfig, TableProps } from 'ant-design-vue';
-import type { Recordable } from '../../../utils';
+import type { Recordable } from '@gupo/common';
 import type { SorterResult } from 'ant-design-vue/es/table/interface';
 import { computed, getCurrentInstance, ref } from 'vue';
 import type { GpTableProps } from '../table';

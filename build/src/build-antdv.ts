@@ -15,5 +15,5 @@ const buildParams = {
 };
 
 export const buildAntdv = () => {
-  return series(clean, parallel(copyFiles, buildFull(buildParams), buildModules(buildParams), genTypes(buildParams), buildStyle(buildParams)));
+  return series(clean, parallel(copyFiles, buildModules(buildParams), genTypes(buildParams), buildStyle(buildParams)));
 };

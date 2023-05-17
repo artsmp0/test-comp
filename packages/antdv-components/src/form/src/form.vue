@@ -6,7 +6,7 @@ import type { FormInstance } from 'ant-design-vue';
 import { Form } from 'ant-design-vue';
 import SearchOpt from './components/search-opt.vue';
 import { useSearchForm } from './hooks';
-import type { Recordable } from '../../utils';
+import type { Recordable } from '@gupo/common';
 
 const props = defineProps(formItemProps);
 const emits = defineEmits(['submit', 'searchReset', 'updateModel', 'cancel', 'finish']);
