@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/nx/schemas/nx-schema.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["story:build"]
+      }
+    }
+  },
+  "targetDefaults": {
+    "story:dev": {
+      "dependsOn": ["^story:dev", "^build:antdv"]
+    },
+    "story:build": {
+      "dependsOn": ["^story:build", "^build:antdv"],
+      "outputs": ["{projectRoot}/docs/.histoire/dist"]
+    },
+    "build:antdv": {
+      "dependsOn": ["^build:antdv"],
+      "outputs": ["{projectRoot}/packages/antdv-components/dist, lib, es"]
+    }
+  },
+  "defaultBase": "main"
+}

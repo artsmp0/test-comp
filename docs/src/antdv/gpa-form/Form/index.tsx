@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Tag } from 'ant-design-vue';
 import { PlusOutlined, LoadingOutlined, InboxOutlined } from '@ant-design/icons-vue';
-import { useFormConfig } from '@gupo/antdv-components/es/form';
+import { useFormConfig } from '@gupoui/antdv/es/form';
 import dayjs from 'dayjs';
 
 export const useDataSync = (params: any) => {

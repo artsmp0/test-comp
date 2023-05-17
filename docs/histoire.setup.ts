@@ -1,5 +1,5 @@
 import { defineSetupVue3 } from '@histoire/plugin-vue';
-import GupoAntdv from '@gupo/antdv-components';
+import GupoAntdv from '@gupoui/antdv';
 // 需要引入 antd 的 css
 import 'ant-design-vue/dist/antd.variable.min.css';
 // 需要引入 vant 的 css

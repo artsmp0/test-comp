@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref, shallowRef } from 'vue';
 import { useDataSync } from './Form';
-import type { GpaFormInstance } from '@gupo/antdv-components/es/form';
-import { useFormConfig } from '@gupo/antdv-components/es/form';
+import type { GpaFormInstance } from '@gupoui/antdv/es/form';
+import { useFormConfig } from '@gupoui/antdv/es/form';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 

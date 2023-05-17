@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Components from 'unplugin-vue-components/vite';
-import { GupoAntdvResolver } from '@gupo/antdv-components/lib/resolver';
+import { GupoAntdvResolver } from '@gupoui/antdv/lib/resolver';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';

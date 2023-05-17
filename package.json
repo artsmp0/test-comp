@@ -28,12 +28,12 @@
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "stylelint": "^15.6.1",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "^5.0.4",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "nx": "16.1.4"
   },
   "lint-staged": {
     "**/*.{js,cjs,mjs,jsx,tsx,ts,vue}": [
