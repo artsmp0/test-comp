@@ -16,7 +16,7 @@
     "preview": "lerna run story:preview --scope @gupo/docs",
     "build:antdv": "lerna run build --scope @gupoui/antdv",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --fix",
-    "new-version": "npm run build:antdv && lerna publish --no-private --conventional-commits --yes"
+    "release": "npm run build:antdv && lerna publish --no-private"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
