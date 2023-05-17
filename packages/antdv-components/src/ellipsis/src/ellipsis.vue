@@ -2,6 +2,7 @@
 import { DownCircleOutlined, UpCircleOutlined } from '@ant-design/icons-vue';
 import type { TooltipProps } from 'ant-design-vue';
 import { Tooltip } from 'ant-design-vue';
+import { shallowRef } from 'vue';
 import { ref, watch, nextTick, computed } from 'vue';
 
 const props = withDefaults(
@@ -20,7 +21,7 @@ const props = withDefaults(
   }
 );
 
-const $text = ref<HTMLDivElement>();
+const $text = shallowRef<HTMLDivElement>();
 const isOverflow = ref(true);
 const collapsedHeight = ref(0);
 const scrollHeight = ref(0);
