@@ -9,13 +9,13 @@
     "play"
   ],
   "scripts": {
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --fix",
-    "build:antdv": "lerna run build --scope @gupoui/antdv",
+    "prepare": "husky install",
     "dev": "lerna run dev --scope @gupo/play",
     "dev:docs": "lerna run story:dev --scope @gupo/docs",
     "build:docs": "lerna run story:build --scope @gupo/docs",
     "preview": "lerna run story:preview --scope @gupo/docs",
-    "prepare": "husky install",
+    "build:antdv": "lerna run build --scope @gupoui/antdv",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --fix",
     "new-version": "npm run build:antdv && lerna publish --no-private --conventional-commits --yes"
   },
   "devDependencies": {

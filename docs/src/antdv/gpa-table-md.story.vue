@@ -119,7 +119,6 @@ const unConnectedColumns: TableColumns<CompareNotListItem> = [
 let { getList: getConnectedList } = useTableListApi(APIS.get['/catalog/tb/list'], true);
 let { getList: getUnConnectedList } = useTableListApi(APIS.get['/jg-bz-gl/compare/not'], true);
 const getList = computed(() => {
-  console.log('getList: ');
   return checked.value ? getUnConnectedList : getConnectedList;
 });
 watchEffect(async () => {

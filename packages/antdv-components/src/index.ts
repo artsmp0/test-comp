@@ -6,8 +6,6 @@ import { GpaEllipsis } from './ellipsis';
 
 export { GpaTable, GpaTime, GpaForm, GpaEllipsis };
 
-console.log(123123);
-
 const components = [GpaTable, GpaTime, GpaForm, GpaEllipsis];
 export function install(app: App) {
   components.forEach(item => {

@@ -40,9 +40,6 @@ const colHeightMap = defineDict(
 const handleClickSize: MenuClickEventHandler = e => {
   emitter(Events.updateSize, e.key as SizeType);
 };
-onUpdated(() => {
-  console.log('props.keepPageReload: ', props.keepPageReload);
-});
 const handleReload = () => {
   if (props.keepPageReload) {
     props.filterList(undefined, false);

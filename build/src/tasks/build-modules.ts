@@ -16,7 +16,6 @@ export const buildModules = ({ pkgJson, outputEs, srcRoot }: BuildParams) => {
         cwd: srcRoot,
       })),
     ].filter(path => !(path.includes('style') || path.includes('resolver')));
-    console.log('genExternal(pkgJson, { full: true }): ', genExternal(pkgJson, { full: true }));
 
     const bundle = await rollup({
       input: entry,

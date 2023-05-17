@@ -12,12 +12,12 @@
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
-  "scripts": {
-    "build": "gulp --require @esbuild-kit/cjs-loader -f ./script/build.ts"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "build": "gulp --require @esbuild-kit/cjs-loader -f ./script/build.ts"
   },
   "peerDependencies": {
     "@ant-design/icons-vue": ">=6",
@@ -34,11 +34,11 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.2",
+    "@gupo/build": "*",
     "@types/lodash-es": "^4.17.7",
     "@types/sortablejs": "^1.15.1",
-    "gulp": "^4.0.2",
-    "@esbuild-kit/cjs-loader": "^2.4.2",
-    "@gupo/build": "*"
+    "gulp": "^4.0.2"
   },
   "engines": {
     "node": ">=14"
