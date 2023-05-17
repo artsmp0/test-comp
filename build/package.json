@@ -3,10 +3,7 @@
   "version": "1.0.1",
   "private": "true",
   "license": "MIT",
-  "main": "index.js",
-  "scripts": {
-    "build:antdv": "gulp --require @esbuild-kit/cjs-loader -f ./src/build-antdv.ts"
-  },
+  "main": "src/index.ts",
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.2",
     "@rollup/plugin-node-resolve": "^15.0.2",

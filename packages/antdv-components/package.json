@@ -12,6 +12,9 @@
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
+  "scripts": {
+    "build": "gulp --require @esbuild-kit/cjs-loader -f ./script/build.ts"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
@@ -32,7 +35,10 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.7",
-    "@types/sortablejs": "^1.15.1"
+    "@types/sortablejs": "^1.15.1",
+    "gulp": "^4.0.2",
+    "@esbuild-kit/cjs-loader": "^2.4.2",
+    "@gupo/build": "*"
   },
   "engines": {
     "node": ">=14"

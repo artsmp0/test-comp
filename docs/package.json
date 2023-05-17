@@ -17,7 +17,6 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@gupo/build": "*",
     "@gupo/eslint-config": "*",
     "@histoire/plugin-vue": "^0.16.1",
     "@vitejs/plugin-vue": "^4.2.1",

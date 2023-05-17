@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --fix",
-    "build:antdv": "lerna run build:antdv --scope @gupo/build",
+    "build:antdv": "lerna run build --scope @gupoui/antdv",
     "dev": "lerna run dev --scope @gupo/play",
     "dev:docs": "lerna run story:dev --scope @gupo/docs",
     "build:docs": "lerna run story:build --scope @gupo/docs",
@@ -26,14 +26,14 @@
     "husky": "^8.0.3",
     "lerna": "^6.6.2",
     "lint-staged": "^13.2.2",
+    "nx": "16.1.4",
     "prettier": "^2.8.8",
     "stylelint": "^15.6.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "^5.0.4",
-    "vue": "^3.2.47",
-    "nx": "16.1.4"
+    "vue": "^3.2.47"
   },
   "lint-staged": {
     "**/*.{js,cjs,mjs,jsx,tsx,ts,vue}": [

@@ -14,4 +14,6 @@ const buildParams = {
   pkgRoot: antdvPkgRoot,
 };
 
-export default series(clean, parallel(copyFiles, buildFull(buildParams), buildModules(buildParams), genTypes(buildParams), buildStyle(buildParams)));
+export const buildAntdv = () => {
+  return series(clean, parallel(copyFiles, buildFull(buildParams), buildModules(buildParams), genTypes(buildParams), buildStyle(buildParams)));
+};
